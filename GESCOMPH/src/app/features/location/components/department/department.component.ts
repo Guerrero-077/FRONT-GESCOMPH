@@ -3,17 +3,17 @@ import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, inj
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { Observable, EMPTY } from 'rxjs';
+import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { IsActive } from '../../../../core/models/IsAcitve.models';
+import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
 import { GenericTableComponent } from '../../../../shared/components/generic-table/generic-table.component';
+import { ToggleButtonComponent } from '../../../../shared/components/toggle-button-component/toggle-button-component.component';
 import { TableColumn } from '../../../../shared/models/TableColumn.models';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
 import { DepartmentStore } from '../../services/department/department.store';
-import { DepartmentSelectModel } from '../../models/department.models';
-import { ToggleButtonComponent } from '../../../../shared/components/toggle-button-component/toggle-button-component.component';
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
-import { IsActive } from '../../../../core/models/IsAcitve.models';
+import { DepartmentSelectModel } from '../../../setting/models/department.models';
 
 @Component({
   selector: 'app-department',

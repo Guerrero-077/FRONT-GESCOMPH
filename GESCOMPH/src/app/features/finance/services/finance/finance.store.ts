@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { FinanceService } from './finance.service';
-import { DepartmentCreate, DepartmentUpdate } from '../../models/department.models';
-import { FinanceCreateModels, FinanceSelectModels, FinanceUpdateModels } from '../../models/finance.models';
+import { FinanceSelectModels, FinanceCreateModels, FinanceUpdateModels } from '../../../setting/models/finance.models';
 
 @Injectable({
   providedIn: 'root'

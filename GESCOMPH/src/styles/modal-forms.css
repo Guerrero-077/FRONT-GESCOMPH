@@ -1,5 +1,5 @@
 /* ============================================
- * GESCOMPAH - ESTILOS ESPECÍFICOS PARA FORMULARIOS EN MODALES
+ * GESCOMPH - ESTILOS ESPECÍFICOS PARA FORMULARIOS EN MODALES
  * ============================================ */
 
 /* ========== VARIABLES ESPECÍFICAS PARA MODALES ========== */
@@ -71,7 +71,7 @@
   .modal-form-grid.two-cols {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .modal-form-grid.three-cols {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -174,25 +174,25 @@
     flex-direction: column;
     gap: 4px;
   }
-  
+
   .modal-form-actions button {
     width: 100%;
   }
-  
+
   .modal-form-grid.two-cols,
   .modal-form-grid.three-cols {
     grid-template-columns: 1fr;
     gap: 6px;
   }
-  
+
   .modal-section-header {
     margin: 10px 0 6px 0;
   }
-  
+
   .modal-section-header h3 {
     font-size: 0.8rem;
   }
-  
+
   .modal-section-header h4 {
     font-size: 0.7rem;
   }
@@ -207,12 +207,34 @@
   text-align: center;
 }
 
-.modal-mb-0 { margin-bottom: 0; }
-.modal-mb-1 { margin-bottom: 4px; }
-.modal-mb-2 { margin-bottom: 8px; }
-.modal-mb-3 { margin-bottom: 12px; }
+.modal-mb-0 {
+  margin-bottom: 0;
+}
 
-.modal-mt-0 { margin-top: 0; }
-.modal-mt-1 { margin-top: 4px; }
-.modal-mt-2 { margin-top: 8px; }
-.modal-mt-3 { margin-top: 12px; }
+.modal-mb-1 {
+  margin-bottom: 4px;
+}
+
+.modal-mb-2 {
+  margin-bottom: 8px;
+}
+
+.modal-mb-3 {
+  margin-bottom: 12px;
+}
+
+.modal-mt-0 {
+  margin-top: 0;
+}
+
+.modal-mt-1 {
+  margin-top: 4px;
+}
+
+.modal-mt-2 {
+  margin-top: 8px;
+}
+
+.modal-mt-3 {
+  margin-top: 12px;
+}

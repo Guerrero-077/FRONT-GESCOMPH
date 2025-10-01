@@ -7,12 +7,11 @@ import { GenericTableComponent } from '../../../../shared/components/generic-tab
 import { ToggleButtonComponent } from '../../../../shared/components/toggle-button-component/toggle-button-component.component';
 
 import { TableColumn } from '../../../../shared/models/TableColumn.models';
-// import { ConfirmDialogService } from '../../../../shared/Services/confirm-dialog-service';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
 
-import { CityService } from '../../../setting/services/city/city.service';
 import { PersonSelectModel } from '../../models/person.models';
 import { PersonStore } from '../../services/person/person.store';
+import { CityService } from '../../../location/services/city/city.service';
 
 type SelectOption<T = number> = { value: T; label: string };
 
@@ -55,7 +54,7 @@ export class PersonComponent implements OnInit {
 
   // Utilidades UI
   trackById = (_: number, it: PersonSelectModel) => it.id;
-  
+
 
   // Helpers
   private getCityOptions$() {

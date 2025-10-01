@@ -17,8 +17,6 @@ import { BehaviorSubject, catchError, distinctUntilChanged, finalize, map, of, s
 import { RoleSelectModel } from '../../../security/models/role.models';
 import { RoleService } from '../../../security/services/role/role.service';
 import { CitySelectModel } from '../../../setting/models/city.models';
-import { CityService } from '../../../setting/services/city/city.service';
-import { DepartmentStore } from '../../../setting/services/department/department.store';
 
 import {
   TenantFormData,
@@ -31,6 +29,8 @@ import { AppValidators as AV } from '../../../../shared/utils/AppValidators';
 import { ErrorMessageService } from '../../../../shared/Services/forms/error-message.service';
 import { FormUtilsService, buildEmailValidators } from '../../../../shared/Services/forms/form-utils.service';
 import { CatalogsMapperService } from '../../../../shared/Services/mappers/catalogs-mapper.service';
+import { CityService } from '../../../location/services/city/city.service';
+import { DepartmentStore } from '../../../location/services/department/department.store';
 
 @Component({
   selector: 'app-tenants-form-dialog',

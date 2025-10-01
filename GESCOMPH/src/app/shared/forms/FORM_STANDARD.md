@@ -1,4 +1,4 @@
-GESCOMPAH – Estándar de Formularios (Bootstrap + Angular Material)
+GESCOMPH – Estándar de Formularios (Bootstrap + Angular Material)
 
 Objetivo
 
@@ -68,4 +68,3 @@ Notas
 - Los estilos globales están en `src/styles/standardized-forms.css`
 - Bootstrap ya está incluido vía `angular.json` (CSS y bundle JS)
 - Para formularios generados, usa `app-dymanic-forms` que ya aplica reglas consistentes
-

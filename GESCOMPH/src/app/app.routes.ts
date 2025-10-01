@@ -71,6 +71,12 @@ export const routes: Routes = [
         loadChildren: () => import('./features/setting/setting.routes').then(m => m.SETTING_ROUTES),
         title: 'Configuración',
       },
+      {
+        path: 'finance',
+        canMatch: [authGuard],
+        loadChildren: () => import('./features/finance/finance.routes').then(m => m.FINANCE_ROUTES),
+        title: 'Finanzas',
+      },
     ],
   },
 

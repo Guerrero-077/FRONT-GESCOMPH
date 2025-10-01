@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from '../../../../core/service/generic/generic.service';
-import { CityCreate, CitySelectModel, CityUpdate } from '../../models/city.models';
 import { Observable } from 'rxjs';
+import { CitySelectModel, CityCreate, CityUpdate } from '../../../setting/models/city.models';
 
 @Injectable({
   providedIn: 'root'

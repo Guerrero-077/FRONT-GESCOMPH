@@ -16,7 +16,7 @@ export class App {
   router = inject(Router);
   private authEvents: AuthEventsService = inject(AuthEventsService);
   private toast: SweetAlertService = inject(SweetAlertService);
-  protected title = 'FrontGESCOMPAH';
+  protected title = 'FrontGESCOMPH';
 
   constructor() {
     // Listener global: ante expiración o logout forzado, mostrar mensaje y llevar a login

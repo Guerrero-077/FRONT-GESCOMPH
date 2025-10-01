@@ -1,29 +1,29 @@
 
-import { Observable, of, forkJoin } from 'rxjs';
-import { take, switchMap, tap } from 'rxjs/operators';
+import { Observable, forkJoin, of } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
 
-import { ProfileService } from '../../services/profile.service';
-import { CityService } from '../../services/city/city.service';
-import { DepartmentService } from '../../services/department/department.service';
-import { PersonService } from '../../../security/services/person/person.service';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
+import { PersonService } from '../../../security/services/person/person.service';
+import { ProfileService } from '../../services/profile.service';
 
-import { PersonSelectModel, PersonUpdateModel } from '../../../security/models/person.models';
-import { CitySelectModel } from '../../models/city.models';
-import { DepartmentSelectModel } from '../../models/department.models';
-import { AppValidators } from '../../../../shared/utils/AppValidators';
-import { UserStore } from '../../../../core/security/services/permission/User.Store';
-import { StandardButtonComponent } from '../../../../shared/components/standard-button/standard-button.component';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCardModule } from '@angular/material/card';
+import { UserStore } from '../../../../core/security/services/permission/User.Store';
 import { FormErrorComponent } from '../../../../shared/components/form-error/form-error.component';
+import { StandardButtonComponent } from '../../../../shared/components/standard-button/standard-button.component';
+import { AppValidators } from '../../../../shared/utils/AppValidators';
+import { PersonSelectModel, PersonUpdateModel } from '../../../security/models/person.models';
+import { CityService } from '../../../location/services/city/city.service';
+import { DepartmentService } from '../../../location/services/department/department.service';
+import { CitySelectModel } from '../../../setting/models/city.models';
+import { DepartmentSelectModel } from '../../../setting/models/department.models';
 
 @Component({
   selector: 'app-profile-form',

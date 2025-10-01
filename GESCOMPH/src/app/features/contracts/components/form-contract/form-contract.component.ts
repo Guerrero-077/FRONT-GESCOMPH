@@ -27,7 +27,6 @@ import { EstablishmentService } from '../../../establishments/services/establish
 import { SquareService } from '../../../establishments/services/square/square.service';
 import { PersonService } from '../../../security/services/person/person.service';
 import { CitySelectModel } from '../../../setting/models/city.models';
-import { CityService } from '../../../setting/services/city/city.service';
 import { ClauseSelect } from '../../models/clause.models';
 import { ContractCreateModel } from '../../models/contract.models';
 import { ClauseService } from '../../services/clause/clause.service';
@@ -45,6 +44,7 @@ import { FormErrorComponent } from '../../../../shared/components/form-error/for
 
 
 import { MatStepperModule } from '@angular/material/stepper';
+import { CityService } from '../../../location/services/city/city.service';
 
 
 /* ========== Validadores auxiliares ========== */

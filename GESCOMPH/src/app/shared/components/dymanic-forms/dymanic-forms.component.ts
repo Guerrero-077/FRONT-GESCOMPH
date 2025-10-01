@@ -1,4 +1,5 @@
-﻿import { CommonModule } from '@angular/common';
+﻿
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import {
   AbstractControl,
@@ -17,11 +18,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { map } from 'rxjs/operators';
 
-import { DepartmentService } from '../../../features/setting/services/department/department.service';
+
 import { ThousandSeparatorDirective } from '../../directives/number/thousand-separator.directive';
 import { DynamicFormField } from '../Models/Form/form.models';
 import { FormType, formSchemas } from './dymanic-forms.config';
 import { FormErrorComponent } from '../form-error/form-error.component';
+import { DepartmentService } from '../../../features/location/services/department/department.service';
 
 type Option = { value: string | number; label: string };
 

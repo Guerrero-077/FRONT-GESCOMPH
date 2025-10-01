@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from '../../../../core/service/generic/generic.service';
-import { FinanceCreateModels, FinanceSelectModels, FinanceUpdateModels } from '../../models/finance.models';
+import { FinanceSelectModels, FinanceCreateModels, FinanceUpdateModels } from '../../../setting/models/finance.models';
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { DepartmentSelectModel, DepartmentCreate, DepartmentUpdate } from '../../models/department.models';
 import { DepartmentService } from './department.service';
+import { DepartmentSelectModel, DepartmentCreate, DepartmentUpdate } from '../../../setting/models/department.models';
 
 @Injectable({
   providedIn: 'root'

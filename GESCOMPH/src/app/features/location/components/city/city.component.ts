@@ -10,9 +10,9 @@ import { GenericTableComponent } from '../../../../shared/components/generic-tab
 import { TableColumn } from '../../../../shared/models/TableColumn.models';
 import { CityStore } from '../../services/city/city.store';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
-import { CitySelectModel } from '../../models/city.models';
 import { ToggleButtonComponent } from '../../../../shared/components/toggle-button-component/toggle-button-component.component';
 import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { CitySelectModel } from '../../../setting/models/city.models';
 
 @Component({
   selector: 'app-city',

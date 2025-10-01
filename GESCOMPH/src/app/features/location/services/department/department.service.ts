@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from '../../../../core/service/generic/generic.service';
-import { DepartmentCreate, DepartmentSelectModel, DepartmentUpdate } from '../../models/department.models';
+import { DepartmentSelectModel, DepartmentCreate, DepartmentUpdate } from '../../../setting/models/department.models';
 
 @Injectable({
   providedIn: 'root'

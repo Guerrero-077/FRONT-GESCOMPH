@@ -1,14 +1,14 @@
 <div class="container-fluid">
     <div class="row justify-content-center d-flex g-3 py-1">
         <mat-toolbar class="custom-toolbar">
-        <!-- Logo clickable -->
+            <!-- Logo clickable -->
             <div class="logo-container" (click)="goHome()">
                 <img src="./Escudo-palermo.png" alt="Logo" class="logo-img" />
             </div>
 
             <!-- Nombre + subtítulo -->
             <div class="title-container">
-                <div class="app-title">GESCOMPAH</div>
+                <div class="app-title">GESCOMPH</div>
                 <div class="app-subtitle">Locales Comerciales Disponibles</div>
             </div>
 
@@ -46,12 +46,9 @@
                     <div class="col-12 col-md-6 col-lg-3">
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-label>Buscar</mat-label>
-                            <input 
-                                matInput 
-                                [value]="filterKey()" 
+                            <input matInput [value]="filterKey()"
                                 (input)="onFilterChange($any($event.target).value || '')"
-                                placeholder="Número, plaza o descripción" 
-                            />
+                                placeholder="Número, plaza o descripción" />
                             <mat-icon matSuffix>search</mat-icon>
                         </mat-form-field>
                     </div>
@@ -71,14 +68,8 @@
                     <div class="col-12 col-md-6 col-lg-3">
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-label>Área mínima (m²)</mat-label>
-                            <input 
-                                matInput type="number" 
-                                appNoSci inputmode="decimal" 
-                                step="0.01" min="1"
-                                formControlName="areaM2" 
-                                placeholder="Ej: 20" 
-                                autocomplete="off" 
-                            />
+                            <input matInput type="number" appNoSci inputmode="decimal" step="0.01" min="1"
+                                formControlName="areaM2" placeholder="Ej: 20" autocomplete="off" />
                         </mat-form-field>
                     </div>
                 </div>
@@ -86,9 +77,8 @@
         </div>
 
         <div class="row justify-content-center d-flex g-3 py-1">
-            <div class="col-12 col-md-4 col-lg-3 justify-content-center d-flex" 
-             *ngFor="let establishment of filtered()"
-            >
+            <div class="col-12 col-md-4 col-lg-3 justify-content-center d-flex"
+                *ngFor="let establishment of filtered()">
                 <app-card [local]="establishment" [showAvailableTag]="true" (onView)="onView($event)"
                     (onCreateAppointment)="onCreateAppointment(establishment.id)">
                 </app-card>
@@ -97,6 +87,6 @@
             <div *ngIf="filtered().length === 0" class="text-center text-muted py-4">
                 <p>No se encontraron resultados con los filtros aplicados.</p>
             </div>
-        </div> 
+        </div>
     </div>
 </div>

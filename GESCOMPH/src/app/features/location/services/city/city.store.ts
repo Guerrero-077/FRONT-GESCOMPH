@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { CityCreate, CitySelectModel, CityUpdate } from '../../models/city.models';
 import { CityService } from './city.service';
+import { CitySelectModel, CityCreate, CityUpdate } from '../../../setting/models/city.models';
 
 @Injectable({
   providedIn: 'root'

@@ -1,39 +1,42 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, OnDestroy, inject, Inject} from '@angular/core';
+import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
 import {
-  ReactiveFormsModule, FormGroup, FormBuilder, Validators,
-  AbstractControl, ValidatorFn, ValidationErrors
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
 } from '@angular/forms';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
-import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { StandardButtonComponent } from '../../../../shared/components/standard-button/standard-button.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
 import { FormErrorComponent } from '../../../../shared/components/form-error/form-error.component';
+import { StandardButtonComponent } from '../../../../shared/components/standard-button/standard-button.component';
 
-import { Subject, of } from 'rxjs';
-import { distinctUntilChanged, switchMap, tap, catchError, takeUntil, map, finalize } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
+import { catchError, distinctUntilChanged, finalize, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
-import { CityService } from '../../../setting/services/city/city.service';
 import { PersonService } from '../../../security/services/person/person.service';
 import { AppointmentService } from '../../services/appointment/appointment.service';
 
-import { AppValidators as AV } from '../../../../shared/utils/AppValidators';
-import { buildEmailValidators, FormUtilsService } from '../../../../shared/Services/forms/form-utils.service';
 import { ErrorMessageService } from '../../../../shared/Services/forms/error-message.service';
+import { buildEmailValidators, FormUtilsService } from '../../../../shared/Services/forms/form-utils.service';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
-import { AppointmentCreateModel } from '../../models/appointment.models';
-import { CitySelectModel } from '../../../setting/models/city.models';
+import { AppValidators as AV } from '../../../../shared/utils/AppValidators';
 import { EstablishmentSelect } from '../../../establishments/models/establishment.models';
+import { CitySelectModel } from '../../../setting/models/city.models';
+import { AppointmentCreateModel } from '../../models/appointment.models';
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CityService } from '../../../location/services/city/city.service';
 
 @Component({
   selector: 'app-form-appointment',

@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.pageHeaderService.setPageHeader('Inicio', 'Página Principal - GESCOMPAH');
+    this.pageHeaderService.setPageHeader('Inicio', 'Página Principal - GESCOMPH');
     this.loadEstablishments();
     this.loadContract();
   }

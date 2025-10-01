@@ -1,41 +1,14 @@
-<mat-tab-group (selectedIndexChange)="onTabChange($event)" *appHasRoleAndPermission="'Administrador'; perms: 'VER'">
-
-  <mat-tab label="Actualiza tu información">
-    <div class="tab-spacing">
-      <app-profile-form></app-profile-form>
-    </div>
-  </mat-tab>
-
-  <mat-tab label="finanzas">
-    <div class="tab-spacing">
-      <app-finance></app-finance>
-    </div>
-  </mat-tab>
-  <mat-tab label="Ubicación">
-    <div class="tab-spacing">
-      <app-location-settings></app-location-settings>
-    </div>
-  </mat-tab>
-  <mat-tab label="Seguridad">
-    <div class="tab-spacing">
-      <app-change-password></app-change-password>
-    </div>
-  </mat-tab>
-</mat-tab-group>
-
-
-<mat-tab-group (selectedIndexChange)="onTabChange($event)" *appHasRoleAndPermission="'Arrendador'; perms: 'VER'">
-
-  <mat-tab label="Actualiza tu información">
-    <div class="tab-spacing">
-      <app-profile-form></app-profile-form>
-    </div>
-  </mat-tab>
-
-
-  <mat-tab label="Seguridad">
-    <div class="tab-spacing">
-      <app-change-password></app-change-password>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+<mat-sidenav-container class="settings-container">
+  <mat-sidenav mode="side" opened class="settings-sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="profile" routerLinkActive="active-link">Perfil de Usuario</a>
+      <a mat-list-item routerLink="location" routerLinkActive="active-link"
+        *appHasRoleAndPermission="'Administrador'; perms: 'VER'">Ubicaciones</a>
+      <a mat-list-item routerLink="finances" routerLinkActive="active-link"
+        *appHasRoleAndPermission="'Administrador'; perms: 'VER'">Finazas</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="settings-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

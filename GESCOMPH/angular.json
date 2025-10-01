@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FrontGESCOMPAH": {
+    "FrontGESCOMPH": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": { "type": "component" },
@@ -74,10 +74,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "FrontGESCOMPAH:build:production"
+              "buildTarget": "FrontGESCOMPH:build:production"
             },
             "development": {
-              "buildTarget": "FrontGESCOMPAH:build:development"
+              "buildTarget": "FrontGESCOMPH:build:development"
             }
           },
           "defaultConfiguration": "development"

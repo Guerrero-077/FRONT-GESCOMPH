@@ -1,0 +1,15 @@
+.settings-container {
+  height: 100%;
+}
+
+.settings-sidenav {
+  width: 200px;
+}
+
+.settings-content {
+  padding: 20px;
+}
+
+.active-link {
+  background-color: rgba(0, 0, 0, 0.1);
+}

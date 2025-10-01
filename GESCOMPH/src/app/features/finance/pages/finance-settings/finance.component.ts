@@ -6,10 +6,10 @@ import { Observable, take } from 'rxjs';
 import { FormDialogComponent } from '../../../../shared/components/form-dialog/form-dialog.component';
 import { TableColumn } from '../../../../shared/models/TableColumn.models';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
-import { FinanceSelectModels } from '../../models/finance.models';
 import { CommonModule } from '@angular/common';
 import { FinanceStore } from '../../services/finance/finance.store';
 import { IsActive } from '../../../../core/models/IsAcitve.models';
+import { FinanceSelectModels } from '../../../setting/models/finance.models';
 
 @Component({
   selector: 'app-finance',

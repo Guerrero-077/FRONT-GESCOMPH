@@ -9,7 +9,7 @@ export const APPOINTMENT_ROUTES: Routes = [
     data: {
       header: {
         title: 'Citas',
-        description: 'Gestione las citas del Sistema - GESCOMPAH'
+        description: 'Gestione las citas del Sistema - GESCOMPH'
       }
     }
   }
