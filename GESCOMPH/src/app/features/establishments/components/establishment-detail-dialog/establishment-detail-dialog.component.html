@@ -1,0 +1,90 @@
+<div class="container-fluid p-4">
+  <div mat-dialog-content>
+    <div class="establishment-info">
+      <div class="mb-4 text-center">
+        <h2>{{ data.name }}</h2>
+      </div>
+
+      <div class="row gx-4">
+
+        <!-- Carrusel de Imágenes -->
+        <div class="col-lg-6 col-md-12 mb-4">
+          <ng-container *ngIf="data.images?.length as imagesLength; else noImages">
+            <div class="carousel-container" *ngIf="imagesLength > 0">
+              <div class="carousel-wrapper">
+                <img
+                  [src]="imgSrc(data.images[currentImageIndex])"
+                  [alt]="'Imagen de ' + data.name"
+                  loading="lazy"
+                  decoding="async"
+                  class="carousel-image"
+                  (click)="viewImage(imgSrc(data.images[currentImageIndex]))"
+                  tabindex="0"
+                  (keydown.enter)="viewImage(imgSrc(data.images[currentImageIndex]))"
+                  role="button"
+                  [attr.aria-label]="'Ver imagen de ' + data.name"
+                />
+
+                <!-- Flechas dentro del .carousel-wrapper -->
+                <button class="carousel-arrow left" (click)="prevImage()" aria-label="Imagen anterior">
+                  <mat-icon>chevron_left</mat-icon>
+                </button>
+
+                <button class="carousel-arrow right" (click)="nextImage()" aria-label="Imagen siguiente">
+                  <mat-icon>chevron_right</mat-icon>
+                </button>
+              </div>
+
+              <div class="carousel-dots">
+                <span
+                  *ngFor="let image of data.images; let idx = index"
+                  class="dot"
+                  [class.active]="idx === currentImageIndex"
+                  (click)="goToImage(idx)">
+                </span>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Fallback si no hay imágenes -->
+          <ng-template #noImages>
+            <div class="no-images-message mt-4">
+              <p>No hay imágenes disponibles para este establecimiento</p>
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- Información del Establecimiento -->
+        <div class="col-lg-6 col-md-12">
+          <div class="info mb-3"><span>Información del establecimiento</span></div>
+
+          <div class="info-card">
+            <p><strong>Dirección:</strong> {{ data.address }}</p>
+          </div>
+
+          <div class="info-card mt-2">
+            <!-- Área con separador de miles -->
+            <p><strong>Área m²:</strong> {{ data.areaM2 | number:'1.0-0' }}</p>
+          </div>
+
+          <div class="title m-3"><span>Información Financiera</span></div>
+          <div class="info-card">
+            <p><strong>Renta base:</strong> {{ data.rentValueBase | money:true:0 }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card mt-3">
+        <p><strong>Descripción:</strong> {{ data.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions align="end" class="text-end">
+    <app-standard-button
+      text="Cerrar"
+      variant="flat"
+      (clicked)="onClose()">
+    </app-standard-button>
+  </div>
+</div>
