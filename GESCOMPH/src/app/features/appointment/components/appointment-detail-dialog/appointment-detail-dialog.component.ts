@@ -29,16 +29,15 @@ type ComputedStatus = 'SCHEDULED' | 'OVERDUE' | 'CLOSED';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppointmentDetailDialogComponent implements OnInit {
-  // Inyección
   private readonly store = inject(AppointmentStore);
   private readonly svc = inject(AppointmentService);
 
-  // Estado local
   appointment: AppointmentSelect | null = null;
   loading = false;
   error: string | null = null;
 
-  // Etiquetas de estado (calculado en front)
+  readonly appointmentsArray$ = this.store.appointmentsArray$;
+
   private static readonly STATUS_LABEL = {
     SCHEDULED: 'Programada',
     OVERDUE: 'Vencida',
@@ -65,7 +64,6 @@ export class AppointmentDetailDialogComponent implements OnInit {
       return;
     }
 
-    // 1) Intento rápido desde el Store (memoria)
     const fromStore = this.store.loadById(id);
     if (fromStore) {
       this.appointment = fromStore;
@@ -73,32 +71,22 @@ export class AppointmentDetailDialogComponent implements OnInit {
       return;
     }
 
-    // 2) Fallback al servicio (asegúrate de exponer getById en AppointmentService)
     this.svc.getById(id)
       .pipe(finalize(() => (this.loading = false)), take(1))
       .subscribe({
         next: (appointment) => {
-          // Re-sincroniza con estado actual del Store si aplica
           const current = this.store.loadById(appointment.id);
           this.appointment = current ?? appointment;
         },
-        error: (err) => {
-          console.error('Error loading appointment detail:', err);
+        error: () => {
           this.error = 'No se pudo cargar el detalle de la cita.';
         },
       });
   }
 
-  // Estado calculado:
-  // - CLOSED: !active
-  // - OVERDUE: active && dateTimeAssigned en el pasado
-  // - SCHEDULED: active && dateTimeAssigned en el futuro/ahora
   getComputedStatus(a: AppointmentSelect | null): ComputedStatus {
-    if (!a) return 'CLOSED';
-    if (!a.active) return 'CLOSED';
-    const now = new Date();
-    const assigned = new Date(a.dateTimeAssigned);
-    return assigned.getTime() < now.getTime() ? 'OVERDUE' : 'SCHEDULED';
+    if (!a || !a.active) return 'CLOSED';
+    return new Date(a.dateTimeAssigned).getTime() < new Date().getTime() ? 'OVERDUE' : 'SCHEDULED';
   }
 
   getStatusText(status: ComputedStatus): string {

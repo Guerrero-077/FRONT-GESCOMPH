@@ -1,32 +1,38 @@
 import { CommonModule } from '@angular/common';
 import {
-  Component, Inject, Optional, OnInit, OnDestroy, inject, ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  Component, Inject,
+  OnDestroy,
+  OnInit,
+  Optional,
+  inject
 } from '@angular/core';
 import {
-  AbstractControl, FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators
+  AbstractControl,
+  NonNullableFormBuilder, ReactiveFormsModule, Validators
 } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { firstValueFrom } from 'rxjs';
 
+import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
 import {
   EstablishmentCreate,
   EstablishmentSelect,
   EstablishmentUpdate,
   ImageSelectDto
 } from '../../models/establishment.models';
-import { EstablishmentStore } from '../../services/establishment/establishment.store';
+import { SquareSelectModel } from '../../models/squares.models';
 import { EstablishmentService } from '../../services/establishment/establishment.service';
+import { EstablishmentStore } from '../../services/establishment/establishment.store';
 import { ImageService } from '../../services/image/image.service';
 import { SquareService } from '../../services/square/square.service';
-import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
-import { SquareSelectModel } from '../../models/squares.models';
 
 
 // Soporte Drag & Drop aislado en directiva y servicio
@@ -35,9 +41,9 @@ import { ThousandSeparatorDirective } from '../../../../shared/directives/number
 import { FilePickerService } from '../../../../shared/Services/Picker/file-picker.service';
 import { GeneralForm, UbicacionForm } from '../../shapes/Formularios';
 
-import { AppValidators } from '../../../../shared/utils/AppValidators';
-import { StandardButtonComponent } from '../../../../shared/components/standard-button/standard-button.component';
 import { FormErrorComponent } from '../../../../shared/components/form-error/form-error.component';
+import { StandardButtonComponent } from '../../../../shared/components/standard-button/standard-button.component';
+import { AppValidators } from '../../../../shared/utils/AppValidators';
 
 
 /* Mensajes de error:

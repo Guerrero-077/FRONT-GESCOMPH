@@ -30,7 +30,7 @@ export class AppointmentListComponent implements OnInit {
 
 
   // Observable de formularios
-  appointments$ = this.appointmentStore.appointments$;
+  appointments$ = this.appointmentStore.appointmentsArray$;
   selectedForm: any = null;
 
   pendingId: number | null = null;
