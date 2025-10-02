@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 
@@ -6,10 +6,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DashboardService {
+  private readonly http = inject(HttpClient);
+  private urlBase = environment.apiURL + '/obligation-months';
 
-  private urlBase = environment.apiURL + '/Establishments';
+  getMonthlyObligations() {
+    return this.http.get<number>(this.urlBase + '/TotalMonth', { withCredentials: true });
+  }
 
-  constructor(private http: HttpClient) { }
-
-  
+  getDayObligations() {
+    return this.http.get<number>(this.urlBase + '/TotalDay', { withCredentials: true });
+  }
 }

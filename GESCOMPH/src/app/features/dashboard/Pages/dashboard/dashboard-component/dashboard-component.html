@@ -4,14 +4,21 @@
 <ng-container *appHasRoleAndPermission="['Administrador']">
   <div class="row d-flex justify-content-center gap-2">
     <div class="row d-flex justify-content-between ">
-        <app-card-info class="col-md-6 col-sm-12 col-lg-6 mb-2" title="Total de ingresos mensuales" [value]="23">
+        <app-card-info
+          class="col-md-6 col-sm-12 col-lg-6 mb-2"
+          title="Total de ingresos mensuales"
+          [value]="totalMonth">
         </app-card-info>
-        <app-card-info class="col-md-6 col-sm-12 col-lg-6 mb-2" title="Total de ingresos anuales" [value]="23">
+
+        <app-card-info
+          class="col-md-6 col-sm-12 col-lg-6 mb-2"
+          title="Total de ingresos diarios"
+          [value]="totalDay">
         </app-card-info>
     </div>
     <div class="row d-flex justify-content-between ">
       <div class="col-md-6 col-sm-12 my-3">
-        <app-circle-chart [title]="'Locales'" [labels]="[ 'Disponibles','Arrendados']"
+        <app-circle-chart [title]="'Locales Disponibles vs Arrendados'" [labels]="[ 'Disponibles','Arrendados']"
           [data]="[activeEstablishment(), inactiveEstablishment()]" [colors]="['#22c55e','#f87171']">
         </app-circle-chart>
       </div>

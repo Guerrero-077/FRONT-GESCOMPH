@@ -4,6 +4,6 @@
     <ng-content select="[icon]"></ng-content>
   </div>
   <div class="card-value">
-    <p>{{ value }}</p>
+    <p>{{ value | currency:'COP':'symbol-narrow':'1.0-0'}}</p>
   </div>
 </div>
