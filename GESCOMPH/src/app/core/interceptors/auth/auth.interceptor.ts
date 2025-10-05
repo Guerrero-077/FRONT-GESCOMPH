@@ -1,11 +1,12 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, switchMap, throwError, EMPTY, shareReplay, finalize } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { AuthService } from '../services/auth/auth.service';
-import { UserStore } from '../services/permission/User.Store';
-import { AuthEventsService } from '../services/auth/auth-events.service';
+import { catchError, switchMap, throwError, shareReplay, finalize } from 'rxjs';
+import { environment } from '../../../../environments/environment';
+import { AuthService } from '../../services/auth/auth.service';
+import { UserStore } from '../../services/permission/User.Store';
+import { AuthEventsService } from '../../services/auth/auth-events.service';
+import { isApiRequest } from '../../utils/http-utils';
 
 // Evita múltiples llamadas concurrentes a /auth/refresh (single-flight)
 let refreshToken$: ReturnType<AuthService['RefreshToken']> | null = null;
@@ -16,7 +17,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authEvents = inject(AuthEventsService);
   const router = inject(Router);
 
-  const isApiRequest = req.url.startsWith(environment.apiURL);
+  const isApiCall = isApiRequest(req.url, environment.apiURL);
   const isRefreshEndpoint = /\/auth\/refresh$/i.test(req.url);
   const isLoginEndpoint = /\/auth\/login$/i.test(req.url);
 
@@ -26,7 +27,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       const status = isHttp ? error.status : 0;
 
       // Si falla el refresh → sesión expirada
-      if (isApiRequest && isRefreshEndpoint && isHttp) {
+      if (isApiCall && isRefreshEndpoint && isHttp) {
         userStore.clear();
         authEvents.sessionExpired();
         try { router.navigate(['/auth/login']); } catch { }
@@ -34,7 +35,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       }
 
       // 401 en API
-      if (isHttp && status === 401 && isApiRequest && !isRefreshEndpoint) {
+      if (isHttp && status === 401 && isApiCall && !isRefreshEndpoint) {
         if (isLoginEndpoint) {
           return throwError(() => error);
         }

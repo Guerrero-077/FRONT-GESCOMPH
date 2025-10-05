@@ -1,5 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
+import { isApiRequest } from '../../utils/http-utils';
 
 function getCookie(name: string): string | null {
   const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
@@ -7,9 +8,9 @@ function getCookie(name: string): string | null {
 }
 
 export const csrfInterceptor: HttpInterceptorFn = (req, next) => {
-  const isApiRequest = req.url.startsWith(environment.apiURL);
+  const apiCall = isApiRequest(req.url, environment.apiURL);
 
-  if (isApiRequest) {
+  if (apiCall) {
     const csrfCookie = getCookie('XSRF-TOKEN');
     req = req.clone({
       withCredentials: true,

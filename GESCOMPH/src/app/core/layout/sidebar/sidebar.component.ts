@@ -15,6 +15,7 @@ import { finalize } from 'rxjs';
 import { AuthService } from '../../services/auth/auth.service';
 import { PermissionService } from '../../services/permission/permission.service';
 import { SweetAlertService } from '../../../shared/Services/sweet-alert/sweet-alert.service';
+import { normalizeUrl } from '../../utils/url-normalize';
 import { BackendMenuItem, BackendSubMenuItem, SidebarItem, SidebarNode } from './sidebar.config';
 
 @Component({
@@ -77,22 +78,8 @@ export class SidebarComponent {
     const modules = [...backendMenu].sort((a, b) => a.id - b.id);
 
     const normalizeRoute = (route?: string | null): string | undefined => {
-      if (!route) return undefined;
-      const trimmed = route.trim();
-      if (!trimmed) return undefined;
-
-      let normalizedRoute = trimmed;
-      while (normalizedRoute.startsWith('/')) {
-        normalizedRoute = normalizedRoute.slice(1);
-      }
-
-      if (normalizedRoute.toLowerCase().startsWith('admin/')) {
-        normalizedRoute = normalizedRoute.slice('admin/'.length);
-      }
-
-      if (!normalizedRoute) return undefined;
-
-      return `/${normalizedRoute}`;
+      const normalized = normalizeUrl(route);
+      return normalized ? `/${normalized}` : undefined;
     };
 
     return modules.flatMap<SidebarItem>((mod) => {

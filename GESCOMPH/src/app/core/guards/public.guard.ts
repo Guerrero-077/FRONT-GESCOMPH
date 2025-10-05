@@ -1,5 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { normalizeUrl } from '../utils/url-normalize';
 import { UserStore } from '../services/permission/User.Store';
 
 export const publicGuard: CanActivateFn = (route, state) => {
@@ -8,8 +9,8 @@ export const publicGuard: CanActivateFn = (route, state) => {
 
   // Permitir rutas de recuperación de contraseña aunque el usuario esté logueado
   // Ej: /auth/password_reset y /auth/password_reset/confirm
-  const url = state.url || '';
-  if (url.startsWith('/auth/password_reset')) {
+  const url = normalizeUrl(state.url);
+  if (url.startsWith('auth/password_reset')) {
     return true;
   }
 

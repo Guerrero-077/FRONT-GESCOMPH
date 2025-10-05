@@ -1,6 +1,7 @@
 import { Injectable, computed } from '@angular/core';
 import { BackendMenuItem } from '../../layout/sidebar/sidebar.config';
 import { normalizeUrl } from '../../utils/url-normalize';
+import { buildRoutePermissionIndex } from '../../utils/menu-utils';
 import { UserStore } from './User.Store';
 import { User } from '../../models/user.model';
 
@@ -10,35 +11,23 @@ export class PermissionService {
 
   // === Derivados reactivos ===================================================
 
-  // Menú reactivo (para componentes)
+  // Menu reactivo (para componentes)
   readonly menu = computed<BackendMenuItem[]>(() => this.userStore.user()?.menu ?? []);
 
-  // Índices reactivos para consultas en O(1)
-  // 1) ruta -> Set(permisos)
-  readonly routeToPerms = computed(() => {
-    const map = new Map<string, Set<string>>();
-    for (const mod of this.userStore.user()?.menu ?? []) {
-      for (const form of mod.forms ?? []) {
-        map.set(form.route, new Set(form.permissions ?? []));
-      }
-    }
-    return map;
-  });
+  // Indices reactivos para consultas en O(1)
+  readonly routeToPerms = computed(() => buildRoutePermissionIndex(this.userStore.user()?.menu));
 
   // 2) roles -> Set
   readonly roleSet = computed(() => new Set(this.userStore.user()?.roles ?? []));
 
-  // === Funciones "puras" para guards (reciben User explícito) ================
+  // === Funciones "puras" para guards (reciben User explicito) ================
   userHasRole(user: User, role: string): boolean {
     return (user.roles ?? []).includes(role);
   }
 
   userHasPermissionForRoute(user: User, permission: string, url: string): boolean {
     const route = normalizeUrl(url);
-    const index = new Map<string, Set<string>>();
-    for (const m of user.menu ?? [])
-      for (const f of m.forms ?? [])
-        index.set(f.route, new Set(f.permissions ?? []));
+    const index = buildRoutePermissionIndex(user.menu);
     return index.get(route)?.has(permission) ?? false;
   }
 
@@ -65,7 +54,7 @@ export class PermissionService {
   }
 
   /**
-   * @deprecated Usa la señal `menu` para contextos reactivos.
+   * @deprecated Prefer the reactive menu signal when possible.
    */
   getMenu(): BackendMenuItem[] {
     return this.user?.menu ?? [];

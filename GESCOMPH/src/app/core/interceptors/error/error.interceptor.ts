@@ -8,10 +8,10 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { AppError } from '../models/app-error.model';
+import { AppError } from '../../models/app-error.model';
 import { mapHttpErrorToAppError } from './error-mapper';
 import { inject } from '@angular/core';
-import { SweetAlertService } from '../../shared/Services/sweet-alert/sweet-alert.service';
+import { SweetAlertService } from '../../../shared/Services/sweet-alert/sweet-alert.service';
 
 // Evita toasts duplicados para el mismo error (mismo traceId del backend)
 const shownTraceIds = new Map<string, number>();

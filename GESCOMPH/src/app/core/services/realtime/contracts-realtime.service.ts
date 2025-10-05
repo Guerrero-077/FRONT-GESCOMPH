@@ -2,6 +2,7 @@
 import { Injectable, inject, NgZone, ApplicationRef } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { environment } from '../../../../environments/environment';
+import { stripTrailingSlash } from '../../utils/http-utils';
 import { ContractStore } from '../../../features/contracts/services/contract/contract.store';
 
 type ExpiredPayload = {
@@ -22,7 +23,7 @@ export class ContractsRealtimeService {
   connect(): void {
     if (this.hub) return;
 
-    const hubUrl = `${environment.apiURL.replace(/\/$/, '')}/hubs/contracts`;
+    const hubUrl = `${stripTrailingSlash(environment.apiURL)}/hubs/contracts`;
 
     this.hub = new signalR.HubConnectionBuilder()
       .withUrl(hubUrl, { withCredentials: true })

@@ -1,6 +1,7 @@
 import { ApplicationRef, Injectable, NgZone, inject } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { environment } from '../../../../environments/environment';
+import { stripTrailingSlash } from '../../utils/http-utils';
 import { AuthService } from '../auth/auth.service';
 import { UserStore } from '../permission/User.Store';
 
@@ -20,7 +21,7 @@ export class PermissionsRealtimeService {
   connect(): void {
     if (this.hub) return;
 
-    const hubUrl = `${environment.apiURL.replace(/\/$/, '')}/hubs/security`;
+    const hubUrl = `${stripTrailingSlash(environment.apiURL)}/hubs/security`;
     this.hub = new signalR.HubConnectionBuilder()
       .withUrl(hubUrl, { withCredentials: true })
       .withAutomaticReconnect()
@@ -33,7 +34,7 @@ export class PermissionsRealtimeService {
 
     this.hub.start()
       .then(() => console.debug('[SignalR] SecurityHub conectado a', hubUrl))
-      .catch(err => console.error('[SignalR] Error de conexión SecurityHub', err));
+      .catch(err => console.error('[SignalR] Error de conexion SecurityHub', err));
   }
 
   disconnect(): void {
