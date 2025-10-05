@@ -9,7 +9,7 @@ import { HeaderComponent } from '../header/header.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { PermissionsRealtimeService } from '../../services/realtime/permissions-realtime.service';
+import { PermissionsRealtimeService } from '../../core/services/realtime/permissions-realtime.service';
 
 @Component({
   selector: 'app-layout',

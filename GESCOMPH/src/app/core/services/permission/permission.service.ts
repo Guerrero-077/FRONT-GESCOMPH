@@ -1,10 +1,10 @@
 import { Injectable, computed, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BackendMenuItem } from '../../layout/sidebar/sidebar.config';
-import { normalizeUrl } from '../../utils/url-normalize';
-import { buildRoutePermissionIndex } from '../../utils/menu-utils';
-import { SessionSyncService } from '../auth/session-sync.service';
 import { User } from '../../models/user.model';
+import { buildRoutePermissionIndex } from '../../utils/menu-utils';
+import { normalizeUrl } from '../../utils/url-normalize';
+import { SessionSyncService } from '../auth/session-sync.service';
+import { BackendMenuItem } from '../../../layout/sidebar/sidebar.config';
 
 @Injectable({ providedIn: 'root' })
 export class PermissionService {

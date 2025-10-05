@@ -5,7 +5,7 @@ import { catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { LoginModel } from '../../../features/auth-login/models/login.models';
 import { RegisterModel } from '../../../features/auth-login/models/register.models';
-import { ChangePasswordDto } from '../../models/ChangePassword.models';
+import { ChangePasswordDto } from '../../../features/auth-login/models/ChangePassword.models';
 import { User } from '../../models/user.model';
 import { UserStore } from '../permission/User.Store';
 import { AuthEventsService } from './auth-events.service';

@@ -1,6 +1,6 @@
 import { normalizeUrl } from './url-normalize';
-import { BackendMenuItem } from '../layout/sidebar/sidebar.config';
 import { User } from '../models/user.model';
+import { BackendMenuItem } from '../../layout/sidebar/sidebar.config';
 
 export type MenuLike = readonly BackendMenuItem[] | User['menu'] | null | undefined;
 

@@ -10,12 +10,12 @@ import {
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { Router, RouterModule, IsActiveMatchOptions } from '@angular/router';
+import { IsActiveMatchOptions, Router, RouterModule } from '@angular/router';
 import { finalize } from 'rxjs';
-import { AuthService } from '../../services/auth/auth.service';
-import { PermissionService } from '../../services/permission/permission.service';
-import { SweetAlertService } from '../../../shared/Services/sweet-alert/sweet-alert.service';
-import { normalizeUrl } from '../../utils/url-normalize';
+import { AuthService } from '../../core/services/auth/auth.service';
+import { PermissionService } from '../../core/services/permission/permission.service';
+import { normalizeUrl } from '../../core/utils/url-normalize';
+import { SweetAlertService } from '../../shared/Services/sweet-alert/sweet-alert.service';
 import { BackendMenuItem, BackendSubMenuItem, SidebarItem, SidebarNode } from './sidebar.config';
 
 @Component({

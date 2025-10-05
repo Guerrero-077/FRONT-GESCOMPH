@@ -1,10 +1,10 @@
 import { Component, computed, inject, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { PageHeaderService } from '../../../shared/Services/PageHeader/page-header.service';
-import { UserStore } from '../../services/permission/User.Store';
-import { AuthService } from '../../services/auth/auth.service';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { AuthService } from '../../core/services/auth/auth.service';
+import { UserStore } from '../../core/services/permission/User.Store';
+import { PageHeaderService } from '../../shared/Services/PageHeader/page-header.service';
 
 @Component({
   selector: 'app-header',

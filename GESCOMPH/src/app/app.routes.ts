@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { publicGuard } from './core/guards/public.guard';
 import { LandingComponent } from './features/public/pages/landing/landing.component';
-import { LayoutComponent } from './core/layout/main/layout.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { EstablishmentListComponent } from './features/public/pages/establishment-list/establishment-list.component';
+import { LayoutComponent } from './layout/main/layout.component';
 
 export const routes: Routes = [
   // Landing pública

@@ -1,4 +1,5 @@
-import { BackendMenuItem } from '../../core/layout/sidebar/sidebar.config';
+import { BackendMenuItem } from "../../layout/sidebar/sidebar.config";
+
 
 export interface User {
   id: number;
