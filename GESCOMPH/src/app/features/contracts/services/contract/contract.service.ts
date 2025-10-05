@@ -8,7 +8,7 @@ import {
   ContractCard,
   MonthlyObligation,
 } from '../../models/contract.models';
-import { environment } from '../../../../../environments/environment.development';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ContractService {

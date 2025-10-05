@@ -71,6 +71,13 @@ export class ContractsRealtimeService {
           case 'created':
             this.refreshAll();
             break;
+          case 'updated':
+            if (payload.id && payload.active !== undefined) {
+              this.store.patchOne(payload.id, { active: payload.active });
+              this.appRef.tick();
+            }
+            this.refreshAll();
+            break;
         }
       });
     });

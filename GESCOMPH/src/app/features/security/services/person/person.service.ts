@@ -3,7 +3,7 @@ import { GenericService } from '../../../../core/services/generic/generic.servic
 import { PersonSelectModel, PersonCreateModel, PersonUpdateModel } from '../../models/person.models';
 import { Observable } from 'rxjs';
 import { TenantsSelectModel } from '../../../tenants/models/tenants.models';
-import { environment } from '../../../../../environments/environment.development';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
