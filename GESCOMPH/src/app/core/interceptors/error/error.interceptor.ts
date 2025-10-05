@@ -44,8 +44,11 @@ export const errorInterceptor: HttpInterceptorFn = (
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       const appError: AppError = mapHttpErrorToAppError(error);
-      // Mostrar toast para errores de API excepto 401 (manejados por authInterceptor)
-      if (error.status !== 401) {
+      const isLogin401 =
+        error.status === 401 &&
+        /\/auth\/login$/i.test(req.url.split('?')[0]);
+      // Mostrar toast para errores de API, incluyendo 401 del login (resto lo maneja authInterceptor)
+      if (error.status !== 401 || isLogin401) {
         // Mapear tipo a icono: Validation/Business => error
         const msg = appError.message || 'Ocurrió un error inesperado';
 
@@ -54,11 +57,15 @@ export const errorInterceptor: HttpInterceptorFn = (
           appError.type === 'Validation' || error.status === 404;
 
         if (!suppressToast && shouldNotifyOnce(error?.error)) {
-          // No esperar el promise para no bloquear la cadena
-          toast.showNotification('Error', msg, 'error');
+          // Programar el toast para que aparezca después de que se cierre el loader
+          globalThis.setTimeout(() => {
+            void toast.showNotification('Error', msg, 'error');
+          }, 0);
         }
       }
       return throwError(() => appError);
     })
   );
 };
+
+

@@ -1,8 +1,8 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router, UrlTree, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { of, map, catchError } from 'rxjs';
-import { AuthService } from '../services/auth/auth.service';
-import { UserStore } from '../services/permission/User.Store';
+import { of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { SessionSyncService } from '../services/auth/session-sync.service';
 import { normalizeUrl } from '../utils/url-normalize';
 import { buildNormalizedRouteSet, hasRouteAccess } from '../utils/menu-utils';
 import { User } from '../models/user.model';
@@ -12,10 +12,9 @@ export const authGuard: CanActivateFn = (
   state: RouterStateSnapshot
 ) => {
   const router = inject(Router);
-  const auth = inject(AuthService);
-  const userStore = inject(UserStore);
+  const sessionSync = inject(SessionSyncService);
 
-  const can = (u: User | null): boolean | UrlTree => {
+  const canNavigate = (u: User): boolean | UrlTree => {
     if (!u?.menu?.length) return router.parseUrl('/auth/login');
 
     const allowed = buildNormalizedRouteSet(u.menu);
@@ -27,11 +26,10 @@ export const authGuard: CanActivateFn = (
     return router.parseUrl(allowed.has('dashboard') ? '/dashboard' : '/auth/login');
   };
 
-  return auth.GetMe().pipe(
-    map(u => {
-      if (!u) return router.parseUrl('/auth/login');
-      userStore.set(u);
-      return can(u);
+  return sessionSync.hydrate().pipe(
+    map(user => {
+      if (!user) return router.parseUrl('/auth/login');
+      return canNavigate(user);
     }),
     catchError(() => of(router.parseUrl('/auth/login')))
   );

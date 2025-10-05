@@ -19,16 +19,31 @@ export class App {
   protected title = 'FrontGESCOMPH';
 
   constructor() {
-    // Listener global: ante expiración o logout forzado, mostrar mensaje y llevar a login
-    this.authEvents.onEvents().subscribe(async (ev) => {
+    // Listener global: ante expiración, login y logout mostrar mensaje y llevar a login cuando aplique
+    this.authEvents.onEvents().subscribe((ev) => {
       if (ev.type === 'SESSION_EXPIRED') {
-        await this.toast.error('Tu sesión ha expirado. Vuelve a iniciar sesión.', 'Sesión expirada');
+        globalThis.setTimeout(() => {
+          void this.toast.error('Tu sesión ha expirado. Vuelve a iniciar sesión.', 'Sesión expirada');
+        }, 0);
         this.router.navigate(['/auth/login']);
+        return;
       }
+
       if (ev.type === 'LOGOUT') {
-        await this.toast.success('Has cerrado sesión correctamente.', 'Sesión cerrada');
+        globalThis.setTimeout(() => {
+          void this.toast.success('Has cerrado sesión correctamente.', 'Sesión cerrada');
+        }, 0);
         this.router.navigate(['/auth/login']);
+        return;
+      }
+
+      if (ev.type === 'LOGIN_SUCCESS') {
+        globalThis.setTimeout(() => {
+          void this.toast.success('Inicio de sesión exitoso.', 'Bienvenido');
+        }, 0);
       }
     });
   }
 }
+
+

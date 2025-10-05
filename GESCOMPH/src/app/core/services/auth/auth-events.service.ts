@@ -4,7 +4,9 @@ import { Subject, Observable } from 'rxjs';
 export type AuthEvent =
   | { type: 'SESSION_EXPIRED' }
   | { type: 'UNAUTHORIZED' }
-  | { type: 'LOGOUT' };
+  | { type: 'LOGOUT' }
+  | { type: 'LOGIN_SUCCESS' }
+  | { type: 'REFRESH_SUCCESS' };
 
 @Injectable({ providedIn: 'root' })
 export class AuthEventsService {
@@ -18,7 +20,6 @@ export class AuthEventsService {
     return this.authEvents$.asObservable();
   }
 
-  // Helpers para emitir eventos específicos
   sessionExpired() {
     this.emit({ type: 'SESSION_EXPIRED' });
   }
@@ -29,5 +30,13 @@ export class AuthEventsService {
 
   logout() {
     this.emit({ type: 'LOGOUT' });
+  }
+
+  loginSuccess() {
+    this.emit({ type: 'LOGIN_SUCCESS' });
+  }
+
+  refreshSuccess() {
+    this.emit({ type: 'REFRESH_SUCCESS' });
   }
 }
