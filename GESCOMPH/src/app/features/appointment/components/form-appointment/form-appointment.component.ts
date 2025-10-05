@@ -54,8 +54,7 @@ import { CityService } from '../../../location/services/city/city.service';
     MatIconModule,
     MatStepperModule,
     MatProgressSpinnerModule,
-    StandardButtonComponent,
-    FormErrorComponent
+    StandardButtonComponent
   ],
   templateUrl: './form-appointment.component.html',
   styleUrls: ['./form-appointment.component.css']
@@ -97,7 +96,7 @@ export class FormAppointmentComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForms();
@@ -207,7 +206,8 @@ export class FormAppointmentComponent implements OnInit, OnDestroy {
     );
 
     this.appointmentFormGroup.patchValue(
-      { cityId: p.cityId ?? null,
+      {
+        cityId: p.cityId ?? null,
         establishmentId: this.data.id,
         establishmentName: this.data.name
       },
@@ -219,7 +219,7 @@ export class FormAppointmentComponent implements OnInit, OnDestroy {
     this.personaEncontrada = false;
     this.personId = null;
     this.foundCityName = null;
-    this.personFormGroup.patchValue({ firstName: '', lastName: '', phone: '', email: '', address: ''}, { emitEvent: false });
+    this.personFormGroup.patchValue({ firstName: '', lastName: '', phone: '', email: '', address: '' }, { emitEvent: false });
     this.appointmentFormGroup.patchValue({ cityId: null }, { emitEvent: false });
   }
 

@@ -3,7 +3,7 @@ import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { PageHeaderService } from '../../../../shared/Services/PageHeader/page-header.service';
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';

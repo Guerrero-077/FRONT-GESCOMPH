@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GenericService } from '../../../../core/service/generic/generic.service';
+import { GenericService } from '../../../../core/services/generic/generic.service';
 import { RolFormPermissionCreateModel, RolFormPermissionGroupedModel, RolFormPermissionUpdateModel } from '../../models/rol-form-permission.models';
 
 @Injectable({

@@ -21,7 +21,7 @@ import { RoleStore } from '../../services/role/role.store';
 
 import { TableColumn } from '../../../../shared/models/TableColumn.models';
 import { ToggleButtonComponent } from '../../../../shared/components/toggle-button-component/toggle-button-component.component';
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 
 @Component({
   standalone: true,

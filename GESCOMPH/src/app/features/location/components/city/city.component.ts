@@ -11,7 +11,7 @@ import { TableColumn } from '../../../../shared/models/TableColumn.models';
 import { CityStore } from '../../services/city/city.store';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
 import { ToggleButtonComponent } from '../../../../shared/components/toggle-button-component/toggle-button-component.component';
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 import { CitySelectModel } from '../../../setting/models/city.models';
 
 @Component({

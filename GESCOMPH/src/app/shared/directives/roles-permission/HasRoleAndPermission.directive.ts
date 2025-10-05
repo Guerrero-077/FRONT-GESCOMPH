@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
-import { PermissionService } from '../services/permission/permission.service';
-import { UserStore } from '../services/permission/User.Store';
+import { PermissionService } from '../../../core/services/permission/permission.service';
+import { UserStore } from '../../../core/services/permission/User.Store';
 
 type Mode = 'any' | 'all';
 

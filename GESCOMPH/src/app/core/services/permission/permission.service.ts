@@ -1,12 +1,12 @@
 import { Injectable, computed } from '@angular/core';
-import { BackendMenuItem } from '../../../../shared/components/sidebar/sidebar.config';
-import { User } from '../../../../shared/models/user.model';
-import { normalizeUrl } from '../../../utils/url-normalize';
+import { BackendMenuItem } from '../../layout/sidebar/sidebar.config';
+import { normalizeUrl } from '../../utils/url-normalize';
 import { UserStore } from './User.Store';
+import { User } from '../../models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class PermissionService {
-  constructor(private readonly userStore: UserStore) {}
+  constructor(private readonly userStore: UserStore) { }
 
   // === Derivados reactivos ===================================================
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GenericService } from '../../../../core/service/generic/generic.service';
+import { GenericService } from '../../../../core/services/generic/generic.service';
 import { SquareCreateModel, SquareSelectModel, SquareUpdateModel } from '../../models/squares.models';
 
 @Injectable({

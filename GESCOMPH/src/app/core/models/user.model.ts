@@ -1,8 +1,8 @@
-import { BackendMenuItem } from '../../shared/components/sidebar/sidebar.config';
+import { BackendMenuItem } from '../../core/layout/sidebar/sidebar.config';
 
 export interface User {
   id: number;
-  fullName: string ;
+  fullName: string;
   email: string;
   roles: string[];
   menu: BackendMenuItem[];

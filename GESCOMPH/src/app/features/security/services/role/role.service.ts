@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RoleCreateModel, RoleSelectModel, RoleUpdateModel } from '../../models/role.models';
 import { environment } from '../../../../../environments/environment';
-import { GenericService } from '../../../../core/service/generic/generic.service';
+import { GenericService } from '../../../../core/services/generic/generic.service';
 
 @Injectable({
   providedIn: 'root'

@@ -2,10 +2,10 @@ import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, switchMap, throwError, EMPTY, shareReplay, finalize } from 'rxjs';
-import { environment } from '../../../../environments/environment';
-import { AuthService } from '../../security/services/auth/auth.service';
-import { UserStore } from '../../security/services/permission/User.Store';
-import { AuthEventsService } from '../../security/services/auth/auth-events.service';
+import { environment } from '../../../environments/environment';
+import { AuthService } from '../services/auth/auth.service';
+import { UserStore } from '../services/permission/User.Store';
+import { AuthEventsService } from '../services/auth/auth-events.service';
 
 // Evita múltiples llamadas concurrentes a /auth/refresh (single-flight)
 let refreshToken$: ReturnType<AuthService['RefreshToken']> | null = null;
@@ -29,7 +29,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       if (isApiRequest && isRefreshEndpoint && isHttp) {
         userStore.clear();
         authEvents.sessionExpired();
-        try { router.navigate(['/auth/login']); } catch {}
+        try { router.navigate(['/auth/login']); } catch { }
         return throwError(() => ({ __authExpired: true, status: 401 }));
       }
 
@@ -52,7 +52,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
           catchError(() => {
             userStore.clear();
             authEvents.sessionExpired();
-            try { router.navigate(['/auth/login']); } catch {}
+            try { router.navigate(['/auth/login']); } catch { }
             return throwError(() => ({ __authExpired: true, status: 401 }));
           })
         );

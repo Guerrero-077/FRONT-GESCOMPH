@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GenericService } from '../../../../core/service/generic/generic.service';
+import { GenericService } from '../../../../core/services/generic/generic.service';
 import { DepartmentSelectModel, DepartmentCreate, DepartmentUpdate } from '../../../setting/models/department.models';
 
 @Injectable({

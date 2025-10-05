@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GenericService } from '../../../../core/service/generic/generic.service';
+import { GenericService } from '../../../../core/services/generic/generic.service';
 import { PersonSelectModel, PersonCreateModel, PersonUpdateModel } from '../../models/person.models';
 import { Observable } from 'rxjs';
 import { TenantsSelectModel } from '../../../tenants/models/tenants.models';

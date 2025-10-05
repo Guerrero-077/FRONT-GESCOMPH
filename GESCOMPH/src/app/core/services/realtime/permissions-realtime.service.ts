@@ -1,8 +1,8 @@
 import { ApplicationRef, Injectable, NgZone, inject } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
-import { environment } from '../../../environments/environment';
-import { AuthService } from '../security/services/auth/auth.service';
-import { UserStore } from '../security/services/permission/User.Store';
+import { environment } from '../../../../environments/environment';
+import { AuthService } from '../auth/auth.service';
+import { UserStore } from '../permission/User.Store';
 
 type PermissionsUpdatedPayload = { userIds?: number[] };
 

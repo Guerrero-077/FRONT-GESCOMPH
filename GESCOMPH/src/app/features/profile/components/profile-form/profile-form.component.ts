@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { UserStore } from '../../../../core/security/services/permission/User.Store';
+import { UserStore } from '../../../../core/services/permission/User.Store';
 import { FormErrorComponent } from '../../../../shared/components/form-error/form-error.component';
 import { StandardButtonComponent } from '../../../../shared/components/standard-button/standard-button.component';
 import { AppValidators } from '../../../../shared/utils/AppValidators';

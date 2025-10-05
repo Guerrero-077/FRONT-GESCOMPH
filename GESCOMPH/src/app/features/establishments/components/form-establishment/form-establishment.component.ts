@@ -37,7 +37,6 @@ import { SquareService } from '../../services/square/square.service';
 
 // Soporte Drag & Drop aislado en directiva y servicio
 import { FileDropDirective } from '../../../../shared/directives/file-drop.directive';
-import { ThousandSeparatorDirective } from '../../../../shared/directives/number/thousand-separator.directive';
 import { FilePickerService } from '../../../../shared/Services/Picker/file-picker.service';
 import { GeneralForm, UbicacionForm } from '../../shapes/Formularios';
 
@@ -93,8 +92,7 @@ export const ERRORS = {
     CommonModule, ReactiveFormsModule, MatDialogModule, MatInputModule, MatButtonModule,
     MatSelectModule, MatIconModule, MatProgressSpinnerModule, MatTooltipModule,
     MatStepperModule,
-    FileDropDirective, // directiva para manejar drag&drop de archivos
-    ThousandSeparatorDirective,
+    FileDropDirective,
     StandardButtonComponent,
     FormErrorComponent
   ],

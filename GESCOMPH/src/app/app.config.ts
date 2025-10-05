@@ -4,9 +4,9 @@ import { routes } from './app.routes';
 
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideCloudinaryLoader } from '@angular/common';
-import { authInterceptor } from './core/http/interceptors/auth.interceptor';
-import { errorInterceptor } from './core/http/interceptors/error.interceptor';
-import { ngrokCredentialsInterceptor } from './core/http/interceptors/ngrok-credentials.interceptor';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
+import { ngrokCredentialsInterceptor } from './core/interceptors/ngrok-credentials.interceptor';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideNativeDateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 
 import localeEsCO from '@angular/common/locales/es-CO';
 import { registerLocaleData } from '@angular/common';
-import { csrfInterceptor } from './core/http/interceptors/csrf.Interceptor';
+import { csrfInterceptor } from './core/interceptors/csrf.Interceptor';
 registerLocaleData(localeEsCO);
 
 export const appConfig: ApplicationConfig = {

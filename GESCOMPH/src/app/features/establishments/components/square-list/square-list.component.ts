@@ -7,7 +7,7 @@ import { ToggleButtonComponent } from '../../../../shared/components/toggle-butt
 import { TableColumn } from '../../../../shared/models/TableColumn.models';
 
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
 import { SquareSelectModel, SquareUpdateModel } from '../../models/squares.models';
 import { SharedEventsServiceService } from '../../services/shared/shared-events-service.service';

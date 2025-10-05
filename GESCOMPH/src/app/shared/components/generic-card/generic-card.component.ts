@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/co
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TableColumn } from '../../models/TableColumn.models';
-import { HasRoleAndPermissionDirective } from '../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../directives/roles-permission/HasRoleAndPermission.directive';
 
 export type FieldContext<T> = { $implicit: T; row: T };
 

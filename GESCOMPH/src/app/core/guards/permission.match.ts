@@ -2,9 +2,9 @@ import { inject } from '@angular/core';
 import { CanMatchFn, Router, Route, UrlSegment } from '@angular/router';
 import { of, map, catchError } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
-import { User } from '../../../shared/models/user.model';
 import { UserStore } from '../services/permission/User.Store';
-import { normalizeUrl } from '../../utils/url-normalize';
+import { normalizeUrl } from '../utils/url-normalize';
+import { User } from '../models/user.model';
 
 export const permissionMatchGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
   const router = inject(Router);

@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, switchMap, tap, catchError, throwError } from 'rxjs';
-import { environment } from '../../../../../environments/environment';
-import { LoginModel } from '../../../../features/auth-login/models/login.models';
-import { RegisterModel } from '../../../../features/auth-login/models/register.models';
-import { User } from '../../../../shared/models/user.model';
+import { catchError, Observable, switchMap, tap, throwError } from 'rxjs';
+import { environment } from '../../../../environments/environment';
+import { LoginModel } from '../../../features/auth-login/models/login.models';
+import { RegisterModel } from '../../../features/auth-login/models/register.models';
+import { ChangePasswordDto } from '../../models/ChangePassword.models';
 import { PermissionService } from '../permission/permission.service';
 import { UserStore } from '../permission/User.Store';
-import { ChangePasswordDto } from '../../../models/ChangePassword.models';
+import { User } from '../../models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

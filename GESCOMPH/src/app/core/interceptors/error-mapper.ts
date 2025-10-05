@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { AppError } from '../../models/app-error.model';
+import { AppError } from '../models/app-error.model';
 
 export function mapHttpErrorToAppError(error: HttpErrorResponse): AppError {
   let message = 'Ocurrió un error inesperado';

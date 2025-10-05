@@ -1,7 +1,7 @@
 // services/user.service.ts
 import { Injectable } from '@angular/core';
 import { UserCreateModel, UserSelectModel, UserUpdateModel } from '../../models/user.models';
-import { GenericService } from '../../../../core/service/generic/generic.service';
+import { GenericService } from '../../../../core/services/generic/generic.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends GenericService<UserSelectModel, UserCreateModel, UserUpdateModel> {

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { AuthEventsService } from './core/security/services/auth/auth-events.service';
+import { AuthEventsService } from './core/services/auth/auth-events.service';
 import { SweetAlertService } from './shared/Services/sweet-alert/sweet-alert.service';
 
 @Component({

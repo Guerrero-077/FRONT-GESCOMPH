@@ -25,7 +25,7 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
 import { TableColumn } from '../../models/TableColumn.models';
-import { HasRoleAndPermissionDirective } from '../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../directives/roles-permission/HasRoleAndPermission.directive';
 import { StandardButtonComponent } from '../standard-button/standard-button.component';
 
 export type RowDetailContext<T> = { $implicit: T; row: T };

@@ -11,7 +11,7 @@ import { CardInfoComponent } from '../../../components/card-info/card-info.compo
 import { QuickActionComponent } from '../../../components/quick-action/quick-action.component';
 import { SystemAlertComponent } from "../../../components/system-alert/system-alert.component";
 
-import { HasRoleAndPermissionDirective } from '../../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 import { ContractCard } from '../../../../contracts/models/contract.models';
 import { ContractService } from '../../../../contracts/services/contract/contract.service';
 

@@ -18,7 +18,7 @@ import {
   TenantsCreateModel,
 } from '../../models/tenants.models';
 import { TenantStore } from '../../services/tenants/tenants.store';
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 
 @Component({
   selector: 'app-tenants-list',

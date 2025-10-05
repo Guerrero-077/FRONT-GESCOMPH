@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { IsActive } from '../../../../core/models/IsAcitve.models';
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 import { GenericTableComponent } from '../../../../shared/components/generic-table/generic-table.component';
 import { ToggleButtonComponent } from '../../../../shared/components/toggle-button-component/toggle-button-component.component';
 import { TableColumn } from '../../../../shared/models/TableColumn.models';

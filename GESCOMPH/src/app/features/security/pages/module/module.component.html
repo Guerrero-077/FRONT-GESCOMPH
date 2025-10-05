@@ -29,4 +29,12 @@
     </div>
   </ng-template>
 
+  <ng-template #iconTemplate let-row>
+  <!-- Opción A: Material Icons -->
+    <mat-icon>{{ row.icon }}</mat-icon>
+
+    <!-- Opción B: FontAwesome -->
+    <!-- <i [class]="row.icon"></i> -->
+  </ng-template>
+
 </div>

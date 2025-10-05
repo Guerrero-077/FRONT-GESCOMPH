@@ -13,14 +13,14 @@ import { PageHeaderService } from '../../../../shared/Services/PageHeader/page-h
 
 import { ToggleButtonComponent } from '../../../../shared/components/toggle-button-component/toggle-button-component.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { ContractsRealtimeService } from '../../../../core/realtime/contracts-realtime.service';
+import { ContractsRealtimeService } from '../../../../core/services/realtime/contracts-realtime.service';
 import { StandardButtonComponent } from '../../../../shared/components/standard-button/standard-button.component';
 import { MoneyPipe } from '../../../../shared/pipes/money.pipe';
 

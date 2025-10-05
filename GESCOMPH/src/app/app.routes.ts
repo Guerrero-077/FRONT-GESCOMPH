@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './core/security/guards/auth.guard';
-import { publicGuard } from './core/security/guards/public.guard';
+import { authGuard } from './core/guards/auth.guard';
+import { publicGuard } from './core/guards/public.guard';
 import { LandingComponent } from './features/public/pages/landing/landing.component';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './core/layout/main/layout.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { EstablishmentListComponent } from './features/public/pages/establishment-list/establishment-list.component';
 

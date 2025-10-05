@@ -10,7 +10,7 @@ import { TableColumn } from '../../../../shared/models/TableColumn.models';
 // import { ConfirmDialogService } from '../../../../shared/Services/confirm-dialog-service';
 import { SweetAlertService } from '../../../../shared/Services/sweet-alert/sweet-alert.service';
 
-import { HasRoleAndPermissionDirective } from '../../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../../../shared/directives/roles-permission/HasRoleAndPermission.directive';
 import {
   FormModuleCreateModel,
   FormModuleSelectModel,
@@ -62,7 +62,7 @@ export class FormModuleComponent implements OnInit {
   }
 
   // Utilidades UI
-  
+
 
   // Datos
   private loadFormModules(): void {

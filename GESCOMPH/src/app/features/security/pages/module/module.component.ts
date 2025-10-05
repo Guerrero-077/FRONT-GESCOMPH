@@ -13,11 +13,12 @@ import { PageHeaderService } from '../../../../shared/Services/PageHeader/page-h
 
 import { ModuleStore } from '../../services/module/module.store';
 import { ModuleSelectModel, ModuleUpdateModel } from '../../models/module.models';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-module',
   standalone: true,
-  imports: [GenericTableComponent, CommonModule, ToggleButtonComponent],
+  imports: [GenericTableComponent, CommonModule, ToggleButtonComponent, MatIconModule],
   templateUrl: './module.component.html',
   styleUrls: ['./module.component.css']
 })
@@ -25,10 +26,10 @@ export class ModuleComponent implements OnInit {
   // Inyección de dependencias
   private readonly moduleStore = inject(ModuleStore);
   // private readonly confirmDialog = inject(ConfirmDialogService);
-  private readonly sweetAlert    = inject(SweetAlertService);
+  private readonly sweetAlert = inject(SweetAlertService);
   private readonly sweetAlertService = inject(SweetAlertService);
   private readonly pageHeaderService = inject(PageHeaderService);
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
   // Estado
   modules$ = this.moduleStore.modules$;
@@ -37,6 +38,8 @@ export class ModuleComponent implements OnInit {
   isBusy = (id: number) => this.busyIds.has(id);
 
   @ViewChild('estadoTemplate', { static: true }) estadoTemplate!: TemplateRef<any>;
+  @ViewChild('iconTemplate', { static: true }) iconTemplate!: TemplateRef<any>;
+
 
   ngOnInit(): void {
     this.pageHeaderService.setPageHeader('Módulos', 'Gestión de Módulos');
@@ -44,7 +47,7 @@ export class ModuleComponent implements OnInit {
     this.columns = [
       { key: 'name', header: 'Nombre' },
       { key: 'description', header: 'Descripción' },
-      { key: 'route', header: 'Route' },
+      { key: 'icon', header: 'Icono', type: 'custom', template: this.iconTemplate },
       { key: 'active', header: 'Estado', type: 'custom', template: this.estadoTemplate }
     ];
   }
@@ -58,15 +61,15 @@ export class ModuleComponent implements OnInit {
       });
 
       dialogRef.afterClosed().pipe(
-      filter(Boolean),
-      switchMap(result => this.moduleStore.create(result).pipe(take(1))),
-      tap(() => this.sweetAlertService.showNotification('Creación Exitosa', 'Módulo creado exitosamente.', 'success')),
-      catchError(err => {
-        console.error('Error creando el módulo:', err);
-        this.sweetAlertService.showApiError(err, 'No se pudo crear el módulo.');
-        return EMPTY;
-      })
-    ).subscribe();
+        filter(Boolean),
+        switchMap(result => this.moduleStore.create(result).pipe(take(1))),
+        tap(() => this.sweetAlertService.showNotification('Creación Exitosa', 'Módulo creado exitosamente.', 'success')),
+        catchError(err => {
+          console.error('Error creando el módulo:', err);
+          this.sweetAlertService.showApiError(err, 'No se pudo crear el módulo.');
+          return EMPTY;
+        })
+      ).subscribe();
     });
   }
 
@@ -79,16 +82,16 @@ export class ModuleComponent implements OnInit {
       });
 
       dialogRef.afterClosed().pipe(
-      filter((result): result is Partial<ModuleUpdateModel> => !!result),
-      map(result => ({ id: row.id, ...result } as ModuleUpdateModel)),
-      switchMap(dto => this.moduleStore.update(dto.id, dto).pipe(take(1))),
-      tap(() => this.sweetAlertService.showNotification('Actualización Exitosa', 'Módulo actualizado exitosamente.', 'success')),
-      catchError(err => {
-        console.error('Error actualizando el módulo:', err);
-        this.sweetAlertService.showApiError(err, 'No se pudo actualizar el módulo.');
-        return EMPTY;
-      })
-    ).subscribe();
+        filter((result): result is Partial<ModuleUpdateModel> => !!result),
+        map(result => ({ id: row.id, ...result } as ModuleUpdateModel)),
+        switchMap(dto => this.moduleStore.update(dto.id, dto).pipe(take(1))),
+        tap(() => this.sweetAlertService.showNotification('Actualización Exitosa', 'Módulo actualizado exitosamente.', 'success')),
+        catchError(err => {
+          console.error('Error actualizando el módulo:', err);
+          this.sweetAlertService.showApiError(err, 'No se pudo actualizar el módulo.');
+          return EMPTY;
+        })
+      ).subscribe();
     });
   }
 

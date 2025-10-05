@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { HasRoleAndPermissionDirective } from '../../../core/security/directives/HasRoleAndPermission.directive';
+import { HasRoleAndPermissionDirective } from '../../directives/roles-permission/HasRoleAndPermission.directive';
 import { CommonModule } from '@angular/common';
 
 @Component({

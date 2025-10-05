@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDrawerContainer, MatDrawerContent } from '@angular/material/sidenav';
-import { SidebarComponent } from '../shared/components/sidebar/sidebar.component';
-import { HeaderComponent } from '../shared/components/header/header.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { HeaderComponent } from '../header/header.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { PermissionsRealtimeService } from '../core/realtime/permissions-realtime.service';
+import { PermissionsRealtimeService } from '../../services/realtime/permissions-realtime.service';
 
 @Component({
   selector: 'app-layout',
