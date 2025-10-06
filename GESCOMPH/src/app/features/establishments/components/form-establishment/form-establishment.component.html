@@ -13,85 +13,91 @@
       <div class="form-grid">
         <!-- Nombre -->
         <div class="field-with-error col-span-2">
-        <mat-form-field appearance="outline">
-          <mat-label>Nombre</mat-label>
-          <input
-            matInput
-            formControlName="name"
-            required
-            placeholder="Local 15 - Carnicería El Buen Sabor"
-            (blur)="onTrim(generalGroup.get('name'))"
-            autocomplete="off"
-          />
-          <mat-hint align="start">{{ generalGroup.get('name')?.value?.length || 0 }}/100</mat-hint>
-        </mat-form-field>
-        <app-form-error [control]="generalGroup.get('name')" label="Nombre" variant="plain"></app-form-error>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              required
+              placeholder="Local 15 - Carnicería El Buen Sabor"
+              (blur)="onTrim(generalGroup.get('name'))"
+              autocomplete="off"
+            />
+            <mat-hint align="start">{{ generalGroup.get('name')?.value?.length || 0 }}/100</mat-hint>
+          </mat-form-field>
+          <app-form-error [control]="generalGroup.get('name')" label="Nombre" variant="plain"></app-form-error>
         </div>
 
         <!-- Área -->
         <div class="field-with-error">
-        <mat-form-field appearance="outline">
-          <mat-label>Área (m²)</mat-label>
-          <input
-            matInput
-            type="number"
-            appNoSci
-            inputmode="decimal"
-            step="0.01"
-            min="1"
-            formControlName="areaM2"
-            required
-            placeholder="25.50"
-            (blur)="onNumberBlur(generalGroup.get('areaM2'))"
-            autocomplete="off"
-          />
-        </mat-form-field>
-        <app-form-error [control]="generalGroup.get('areaM2')" label="Área (m²)" variant="plain"></app-form-error>
+          <mat-form-field appearance="outline">
+            <mat-label>Área (m²)</mat-label>
+            <input
+              matInput
+              type="number"
+              appNoSci
+              inputmode="decimal"
+              step="0.01"
+              min="1"
+              formControlName="areaM2"
+              required
+              placeholder="25.50"
+              (blur)="onNumberBlur(generalGroup.get('areaM2'))"
+              autocomplete="off"
+            />
+          </mat-form-field>
+          <app-form-error [control]="generalGroup.get('areaM2')" label="Área (m²)" variant="plain"></app-form-error>
         </div>
-
-        
 
         <!-- UVT -->
         <div class="field-with-error">
-        <mat-form-field appearance="outline">
-          <mat-label>UVT</mat-label>
-          <input
-            matInput
-            type="number"
-            appNoSci
-            inputmode="decimal"
-            step="0.01"
-            min="1"
-            formControlName="uvtQty"
-            required
-            placeholder="2.5"
-            (blur)="onNumberBlur(generalGroup.get('uvtQty'))"
-            autocomplete="off"
-          />
-        </mat-form-field>
-        <app-form-error [control]="generalGroup.get('uvtQty')" label="UVT" variant="plain"></app-form-error>
+          <mat-form-field appearance="outline">
+            <mat-label>
+              UVT
+              <mat-icon
+                class="info-icon"
+                matTooltip="Unidad de Valor Tributario (UVT) es una medida de valor que se ajusta anualmente por inflación, utilizada en Colombia para estandarizar y calcular diversos impuestos y obligaciones tributarias."
+              >
+                info_outline
+              </mat-icon>
+            </mat-label>
+            <input
+              matInput
+              type="number"
+              appNoSci
+              inputmode="decimal"
+              step="0.01"
+              min="1"
+              formControlName="uvtQty"
+              required
+              placeholder="2.5"
+              (blur)="onNumberBlur(generalGroup.get('uvtQty'))"
+              autocomplete="off"
+            />
+          </mat-form-field>
+          <app-form-error [control]="generalGroup.get('uvtQty')" label="UVT" variant="plain"></app-form-error>
         </div>
       </div>
 
       <!-- Descripción -->
       <div class="field-with-error mt-2 w-100">
-      <mat-form-field appearance="outline">
-        <mat-label>Descripción</mat-label>
-        <textarea
-          matInput
-          rows="3"
-          formControlName="description"
-          required
-          placeholder="Local comercial ubicado en el primer piso..."
-          (blur)="onTrim(generalGroup.get('description'))"
-        ></textarea>
-        <mat-hint align="start">{{ generalGroup.get('description')?.value?.length || 0 }}/500</mat-hint>
-      </mat-form-field>
-      <app-form-error [control]="generalGroup.get('description')" label="Descripción" variant="plain"></app-form-error>
+        <mat-form-field appearance="outline">
+          <mat-label>Descripción</mat-label>
+          <textarea
+            matInput
+            rows="3"
+            formControlName="description"
+            required
+            placeholder="Local comercial ubicado en el primer piso..."
+            (blur)="onTrim(generalGroup.get('description'))"
+          ></textarea>
+          <mat-hint align="start">{{ generalGroup.get('description')?.value?.length || 0 }}/500</mat-hint>
+        </mat-form-field>
+        <app-form-error [control]="generalGroup.get('description')" label="Descripción" variant="plain"></app-form-error>
       </div>
 
       <div class="form-actions">
-        <app-standard-button text="Cancelar" variant="stroked" (clicked)="cancel()" [disabled]="isBusy"></app-standard-button>
+        <app-standard-button text="Cancelar" variant="stroked" (clicked)="cancel()" [disabled]="busy()"></app-standard-button>
         <app-standard-button
           text="Siguiente"
           variant="raised"
@@ -99,7 +105,7 @@
           icon="arrow_forward"
           iconPosition="right"
           (clicked)="stepper.next()"
-          [disabled]="generalGroup.invalid || isBusy">
+          [disabled]="generalGroup.invalid || busy()">
         </app-standard-button>
       </div>
     </form>
@@ -116,42 +122,42 @@
 
       <!-- Plaza -->
       <div class="field-with-error w-100 mb-3">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Plaza*</mat-label>
-        <mat-select formControlName="plazaId" required>
-          <mat-option *ngFor="let plaza of Squares; trackBy: trackByIndex" [value]="plaza.id">
-            {{ plaza.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <app-form-error [control]="ubicacionGroup.get('plazaId')" label="Plaza" variant="plain"></app-form-error>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Plaza*</mat-label>
+          <mat-select formControlName="plazaId" required>
+            <mat-option *ngFor="let plaza of squares(); trackBy: trackByIndex" [value]="plaza.id">
+              {{ plaza.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <app-form-error [control]="ubicacionGroup.get('plazaId')" label="Plaza" variant="plain"></app-form-error>
       </div>
 
       <!-- Dirección -->
       <div class="field-with-error w-100 mb-3">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Dirección</mat-label>
-        <input
-          matInput
-          formControlName="address"
-          placeholder="Carrera 7 # 14 - 28 Local 15"
-          (blur)="onTrim(ubicacionGroup.get('address'))"
-          autocomplete="off"
-        />
-      </mat-form-field>
-      <app-form-error [control]="ubicacionGroup.get('address')" label="Dirección" variant="plain"></app-form-error>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Dirección</mat-label>
+          <input
+            matInput
+            formControlName="address"
+            placeholder="Carrera 7 # 14 - 28 Local 15"
+            (blur)="onTrim(ubicacionGroup.get('address'))"
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <app-form-error [control]="ubicacionGroup.get('address')" label="Dirección" variant="plain"></app-form-error>
       </div>
 
       <div class="form-actions space-between">
         <div>
-          <app-standard-button text="Cancelar" variant="stroked" (clicked)="cancel()" [disabled]="isBusy"></app-standard-button>
+          <app-standard-button text="Cancelar" variant="stroked" (clicked)="cancel()" [disabled]="busy()"></app-standard-button>
           <app-standard-button
             text="Anterior"
             variant="flat"
             icon="arrow_back"
             iconPosition="left"
             (clicked)="stepper.previous()"
-            [disabled]="isBusy">
+            [disabled]="busy()">
           </app-standard-button>
         </div>
         <app-standard-button
@@ -161,7 +167,7 @@
           icon="arrow_forward"
           iconPosition="right"
           (clicked)="stepper.next()"
-          [disabled]="ubicacionGroup.invalid || isBusy">
+          [disabled]="ubicacionGroup.invalid || busy()">
         </app-standard-button>
       </div>
     </form>
@@ -179,9 +185,9 @@
       <!-- Dropzone -->
       <div
         appFileDrop
-        (files)="onFilesAdded($event)"
+        (files)="facade.addFiles($event)"
         class="dropzone mb-3"
-        [class.dropzone--disabled]="isBusy"
+        [class.dropzone--disabled]="busy()"
         role="button"
         tabindex="0"
         (keydown.enter)="fileInput.click()"
@@ -190,47 +196,52 @@
       >
         <mat-icon>cloud_upload</mat-icon>
         <p>Arrastra imágenes aquí o haz clic para seleccionarlas</p>
-        <small>Formatos soportados: JPG, PNG, WEBP (Máx. {{ MAX_IMAGES }} imágenes · {{ MAX_FILE_SIZE_MB }} MB c/u)</small>
+        <small>Formatos soportados: JPG, PNG, WEBP (Máx. 5 imágenes · 5 MB c/u)</small>
         <input type="file" #fileInput (change)="handleFileInput($event)" accept="image/jpeg,image/png,image/webp" multiple hidden />
       </div>
 
       <div class="image-counter mt-2 mb-3">
         <span class="counter-badge">
-          {{ selectedFiles.length + existingImagesFull.length }}/{{ MAX_IMAGES }} imágenes
+          {{ facade.totalImages() }}/5 imágenes
         </span>
       </div>
 
       <div class="compact-image-grid">
         <!-- Existentes -->
-        <div
-          class="compact-image-container"
-          *ngFor="let img of existingImagesFull; let i = index; trackBy: trackByIndex"
-          (dragstart)="$event.preventDefault()"
-          (click)="openPreviewFromExisting(i)"
-          role="button"
-          tabindex="0"
-          (keydown.enter)="openPreviewFromExisting(i)"
-          (keydown.space)="openPreviewFromExisting(i)"
-        >
-          <img [src]="imgSrc(img)" alt="Imagen existente" class="compact-image" draggable="false" />
-          <div class="compact-image-actions">
+     <div
+        class="compact-image-container"
+        *ngFor="let img of existingImages(); let i = index; trackBy: trackByIndex"
+        (dragstart)="$event.preventDefault()"
+        (click)="openPreviewFromExisting(i)"
+        role="button"
+        tabindex="0"
+        (keydown.enter)="openPreviewFromExisting(i)"
+        (keydown.space)="openPreviewFromExisting(i)"
+      >
+        <img [src]="img.filePath" alt="Imagen existente" class="compact-image" draggable="false" />
+
+        <div class="compact-image-actions">
+          <div class="compact-actions-inner">
             <button
               mat-icon-button
               color="warn"
-              (click)="$event.stopPropagation(); removeImage(i, true)"
+              (click)="$event.stopPropagation(); removeExisting(i)"
               matTooltip="Eliminar"
-              [disabled]="isBusy"
+              [disabled]="busy() || deletingImage()"
             >
               <mat-icon class="compact-icon">delete</mat-icon>
             </button>
           </div>
-          <span class="compact-image-label">Existente</span>
         </div>
+
+        <span class="compact-image-label">Existente</span>
+      </div>
+
 
         <!-- Nuevas -->
         <div
           class="compact-image-container"
-          *ngFor="let imgPath of imagesPreview; let i = index; trackBy: trackByIndex"
+          *ngFor="let imgPath of previews(); let i = index; trackBy: trackByIndex"
           (dragstart)="$event.preventDefault()"
           (click)="openPreviewFromNew(i)"
           role="button"
@@ -243,9 +254,9 @@
             <button
               mat-icon-button
               color="warn"
-              (click)="$event.stopPropagation(); removeImage(i, false)"
+              (click)="$event.stopPropagation(); removeLocal(i)"
               matTooltip="Eliminar"
-              [disabled]="isBusy"
+              [disabled]="busy()"
             >
               <mat-icon class="compact-icon">delete</mat-icon>
             </button>
@@ -256,14 +267,14 @@
 
       <div class="form-actions space-between">
         <div>
-          <app-standard-button text="Cancelar" variant="stroked" (clicked)="cancel()" [disabled]="isBusy"></app-standard-button>
+          <app-standard-button text="Cancelar" variant="stroked" (clicked)="cancel()" [disabled]="busy()"></app-standard-button>
           <app-standard-button
             text="Anterior"
             variant="flat"
             icon="arrow_back"
             iconPosition="left"
             (clicked)="stepper.previous()"
-            [disabled]="isBusy">
+            [disabled]="busy()">
           </app-standard-button>
         </div>
         <app-standard-button
@@ -273,7 +284,7 @@
           icon="save"
           iconPosition="left"
           (clicked)="onSubmit()"
-          [disabled]="generalGroup.invalid || ubicacionGroup.invalid || isBusy">
+          [disabled]="generalGroup.invalid || ubicacionGroup.invalid || busy()">
         </app-standard-button>
       </div>
     </div>
