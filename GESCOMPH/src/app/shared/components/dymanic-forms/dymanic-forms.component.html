@@ -83,7 +83,8 @@
 
       <app-form-error
         [control]="form.get(field.name)"
-        [label]="field.label ?? (field.name | titlecase)">
+        [label]="field.label ?? (field.name | titlecase)"
+        style="border: 2px solid red; display: block;">
       </app-form-error>
     </mat-form-field>
 
@@ -94,7 +95,8 @@
       </mat-checkbox>
       <app-form-error
         [control]="form.get(field.name)"
-        [label]="field.label ?? (field.name | titlecase)">
+        [label]="field.label ?? (field.name | titlecase)"
+        style="border: 2px solid red; display: block;">
       </app-form-error>
     </div>
 
@@ -109,7 +111,8 @@
       </div>
       <app-form-error
         [control]="form.get(field.name)"
-        [label]="field.label ?? (field.name | titlecase)">
+        [label]="field.label ?? (field.name | titlecase)"
+        style="border: 2px solid red; display: block;">
       </app-form-error>
     </div>
   </div>
