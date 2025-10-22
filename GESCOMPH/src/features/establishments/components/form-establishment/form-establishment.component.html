@@ -54,7 +54,19 @@
         <!-- UVT -->
         <div class="field-with-error">
         <mat-form-field appearance="outline">
-          <mat-label>UVT</mat-label>
+          <mat-label class="field-label-with-icon">
+            UVT
+            <button
+              mat-icon-button
+              type="button"
+              aria-label="Qué es la UVT"
+              matTooltip="Unidad de Valor Tributario (UVT) usada para calcular el valor base del arriendo."
+              matTooltipPosition="above"
+              class="label-info-button"
+            >
+              <mat-icon>info</mat-icon>
+            </button>
+          </mat-label>
           <input
             matInput
             type="number"

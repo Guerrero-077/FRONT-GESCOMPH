@@ -7,11 +7,10 @@ export interface TenantsSelectModel {
   id: number;
 
   personId: number;
-  /** 👇 NUEVO: backend entrega separados */
+
   personFirstName: string;
   personLastName: string;
 
-  /** (opcional) conservar por compatibilidad/mostrar */
   personName: string;
 
   personDocument: string;
