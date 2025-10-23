@@ -1,15 +1,20 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
+import { ChartObligationsMonths } from '../../contracts/models/obligation-month';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  private urlBase = environment.apiURL + '/Establishments';
+  private readonly http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private urlEstablishments = environment.apiURL + '/Establishments';
+  private urlObligation = environment.apiURL + '/obligation-months';
 
+  getLastSixMonthsPaid(){
+    return this.http.get<ChartObligationsMonths[]>(`${this.urlObligation}/LastSixMonthsPaid`);
+  }
 
 }

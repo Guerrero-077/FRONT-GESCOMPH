@@ -14,6 +14,8 @@ import { SystemAlertComponent } from "../../../components/system-alert/system-al
 import { HasRoleAndPermissionDirective } from '../../../../../core/security/directives/HasRoleAndPermission.directive';
 import { ContractCard } from '../../../../contracts/models/contract.models';
 import { ContractService } from '../../../../contracts/services/contract/contract.service';
+import { DashboardService } from '../../../services/dashboard.service';
+import { ChartObligationsMonths } from '../../../../contracts/models/obligation-month';
 
 Chart.register(DoughnutController, ArcElement, Tooltip, Legend);
 
@@ -29,9 +31,11 @@ export class DashboardComponent implements OnInit {
   private readonly pageHeaderService = inject(PageHeaderService);
   private readonly establishmentService = inject(EstablishmentService);
   private readonly contractService = inject(ContractService);
+  private readonly obligationService = inject(DashboardService)
 
   readonly establishments = signal<readonly EstablishmentSelect[]>([]);
   readonly contract = signal<readonly ContractCard[]>([]);
+  readonly obligationsChart = signal<readonly ChartObligationsMonths[]>([]);
 
   readonly loading = signal<boolean>(false);
   readonly error = signal<string | null>(null);
@@ -78,6 +82,29 @@ export class DashboardComponent implements OnInit {
       next: (list) => this.contract.set(list),
       error: (err) => this.error.set(err?.message || 'Error al cargar establecimientos'),
       complete: () => this.loading.set(false),
+    });
+  }
+
+  loadObligationsTotalMonthsChart(): void {
+    this.loading.set(true);
+    this.error.set(null);
+
+    this.obligationService.getLastSixMonthsPaid().subscribe({
+      next: (data: ChartObligationsMonths[]) => {
+        if (!data || data.length === 0) {
+          this.error.set('No se encontraron obligaciones para los últimos seis meses.');
+          this.obligationsChart.set([]);
+        } else {
+          this.obligationsChart.set(data);
+        }
+        this.loading.set(false);
+      },
+      error: (err) => {
+        console.error('Error al cargar obligaciones:', err);
+        this.error.set('Ocurrió un error al cargar los datos.'); 
+        this.obligationsChart.set([]);
+        this.loading.set(false);
+      }
     });
   }
 
