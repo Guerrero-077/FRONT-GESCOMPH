@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import {
   Chart,
   LineController,
@@ -35,16 +35,31 @@ Chart.register(
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css']
 })
-export class LineChartComponent implements OnInit {
+export class LineChartComponent implements OnInit, OnChanges {
   @Input() title: string = '';
-  @Input() labels: string[] = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'];
-  @Input() data: number[] = [2000000, 2300000, 2200000, 2500000, 2400000, 2550000];
+  @Input() labels: string[] = [];
+  @Input() data: number[] = [];
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
   public lineChartConfig!: ChartConfiguration<'line'>;
 
   ngOnInit(): void {
     this.buildChart();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['labels'] || changes['data']) {
+      console.log('🟩 Cambios detectados en LineChart:', {
+        labels: this.labels,
+        data: this.data
+      });
+      this.buildChart();
+
+      // 🔁 Si el chart ya existe, actualízalo
+      if (this.chart) {
+        this.chart.update();
+      }
+    }
   }
 
   private buildChart(): void {
@@ -103,9 +118,7 @@ export class LineChartComponent implements OnInit {
             padding: 12,
             caretPadding: 10,
             callbacks: {
-              title: (items: TooltipItem<'line'>[]) => {
-                return items[0].label; // mes
-              },
+              title: (items: TooltipItem<'line'>[]) => items[0].label,
               label: (item: TooltipItem<'line'>) => {
                 const valor = item.parsed.y.toLocaleString('es-ES', {
                   style: 'currency',
@@ -115,7 +128,6 @@ export class LineChartComponent implements OnInit {
                 return `Ingresos: ${valor}`;
               }
             },
-            // posición centrada (como en tu ejemplo)
             position: 'average'
           }
         },
@@ -125,15 +137,9 @@ export class LineChartComponent implements OnInit {
             ticks: {
               callback: (value) => `$${(Number(value) / 1_000_000).toFixed(1)}M`
             },
-            grid: {
-              color: 'rgba(0,0,0,0.05)'
-            }
+            grid: { color: 'rgba(0,0,0,0.05)' }
           },
-          x: {
-            grid: {
-              display: false
-            }
-          }
+          x: { grid: { display: false } }
         }
       }
     };

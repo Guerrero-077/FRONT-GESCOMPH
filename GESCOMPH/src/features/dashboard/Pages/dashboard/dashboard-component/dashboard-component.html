@@ -26,8 +26,8 @@
       <div class="col-md-7 col-sm-12 my-3">
         <app-line-chart
           [title]="'Tendencia de Ingresos Mensuales'"
-          [labels]="['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun']"
-          [data]="[2000000, 2300000, 2200000, 2500000, 2400000, 2550000]">
+          [labels]="obligationsLabels()"
+          [data]="obligationsData()">
         </app-line-chart>
       </div>
       <div class="col-md-5 col-sm-12 my-3">

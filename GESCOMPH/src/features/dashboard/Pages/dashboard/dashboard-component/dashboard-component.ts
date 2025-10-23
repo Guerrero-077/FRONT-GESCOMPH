@@ -37,6 +37,9 @@ export class DashboardComponent implements OnInit {
   readonly contract = signal<readonly ContractCard[]>([]);
   readonly obligationsChart = signal<readonly ChartObligationsMonths[]>([]);
 
+  readonly obligationsLabels = computed(() => this.obligationsChart().map(c => c.label));
+  readonly obligationsData = computed(() => this.obligationsChart().map(c => c.total));
+
   readonly loading = signal<boolean>(false);
   readonly error = signal<string | null>(null);
 
@@ -61,6 +64,8 @@ export class DashboardComponent implements OnInit {
     this.pageHeaderService.setPageHeader('Inicio', 'Página Principal - GESCOMPAH');
     this.loadEstablishments();
     this.loadContract();
+    this.loadObligationsTotalMonthsChart();
+    
   }
 
   private loadEstablishments(): void {
@@ -90,23 +95,28 @@ export class DashboardComponent implements OnInit {
     this.error.set(null);
 
     this.obligationService.getLastSixMonthsPaid().subscribe({
-      next: (data: ChartObligationsMonths[]) => {
-        if (!data || data.length === 0) {
+      next: (data: any) => {
+        // 🔹 Asegura que siempre sea un array
+        const list = Array.isArray(data) ? data : [data];
+
+        if (!list || list.length === 0) {
           this.error.set('No se encontraron obligaciones para los últimos seis meses.');
           this.obligationsChart.set([]);
         } else {
-          this.obligationsChart.set(data);
+          this.obligationsChart.set(list);
         }
+
         this.loading.set(false);
       },
       error: (err) => {
         console.error('Error al cargar obligaciones:', err);
-        this.error.set('Ocurrió un error al cargar los datos.'); 
+        this.error.set('Ocurrió un error al cargar los datos.');
         this.obligationsChart.set([]);
         this.loading.set(false);
       }
     });
   }
+
 
 }
 
