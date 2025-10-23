@@ -4,11 +4,13 @@
     </h5>
     <div class="card-body">
         <div style="height: 300px;">
-            <canvas baseChart 
-                [data]="{ labels: labels, datasets: datasets }" 
-                [options]="lineChartOptions"
-                [type]="lineChartType">
-            </canvas>
+          <canvas
+            baseChart
+            [data]="lineChartConfig.data"
+            [options]="lineChartConfig.options"
+            [type]="lineChartConfig.type"
+          >
+          </canvas>
         </div>
     </div>
 </div>
