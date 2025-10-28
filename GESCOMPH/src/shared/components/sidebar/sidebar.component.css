@@ -114,7 +114,7 @@
 }
 .sidebar .label-box { flex: 1 1 auto; display: flex; align-items: center; min-height: 1em; }
 
-/* SubmenÃº (hijos) */
+/* Submenú (hijos) */
 .sidebar .submenu {
   padding-left: 1.25rem;
   background: var(--color-surface-muted);
@@ -147,7 +147,7 @@
 }
 .sidebar .submenu .submenu-label { font-weight: 500; }
 
-/* Ãtems directos */
+/* ítems directos */
 .sidebar a.single-link.mat-mdc-list-item.mdc-list-item {
   display: flex; align-items: center;
   margin-bottom: 4px;
@@ -204,7 +204,7 @@
   border-radius: 14px;
 }
 
-/* Responsivo mÃ­nimo */
+/* Responsivo mínimo */
 @media (max-width: 480px) {
   .sidebar .header h3 { font-size: 1.1rem; }
   .sidebar .header p  { font-size: .8rem; }

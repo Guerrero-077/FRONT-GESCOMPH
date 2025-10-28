@@ -1,18 +1,18 @@
 <div class="gcard">
-  <div class="gcard__image" *ngIf="img as src">
+  <div class="gcard-image" *ngIf="img as src">
     <img [src]="src" alt="imagen" />
   </div>
 
-  <div class="gcard__body">
-    <div class="gcard__header" *ngIf="title || subtitle">
-      <div class="gcard__title">{{ title }}</div>
-      <div class="gcard__subtitle" *ngIf="subtitle">{{ subtitle }}</div>
+  <div class="gcard-body">
+    <div class="gcard-header" *ngIf="title || subtitle">
+      <div class="gcard-title">{{ title }}</div>
+      <div class="gcard-subtitle" *ngIf="subtitle">{{ subtitle }}</div>
     </div>
 
-    <div class="gcard__fields" *ngIf="fields?.length">
-      <div class="gcard__field" *ngFor="let col of fields">
-        <div class="gcard__label">{{ col.header }}</div>
-        <div class="gcard__value">
+    <div class="gcard-fields" *ngIf="fields?.length">
+      <div class="gcard-field" *ngFor="let col of fields">
+        <div class="gcard-label">{{ col.header }}</div>
+        <div class="gcard-value">
           <ng-container *ngIf="col.template; else autoValue"
                         [ngTemplateOutlet]="col.template"
                         [ngTemplateOutletContext]="{ $implicit: data, row: data }">
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="gcard__actions">
+    <div class="gcard-actions">
       <ng-container *ngIf="actionsTemplate; else defaultActions"
                     [ngTemplateOutlet]="actionsTemplate"
                     [ngTemplateOutletContext]="{ $implicit: data, row: data }">

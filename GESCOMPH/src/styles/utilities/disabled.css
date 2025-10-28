@@ -1,6 +1,6 @@
 .button-save:disabled,
 .button-cancel:disabled,
-.button-cancel--warn:disabled,
+.button-cancel-warn:disabled,
 .btn-accent:disabled,
 .btn:disabled,
 .btn.disabled,
@@ -23,7 +23,7 @@ button.btn[disabled] {
 button.btn[disabled]:hover,
 .button-save:disabled:hover,
 .button-cancel:disabled:hover,
-.button-cancel--warn:disabled:hover,
+.button-cancel-warn:disabled:hover,
 .btn-accent:disabled:hover {
   background-color: var(--gray-300) !important;
   color: var(--gray-600) !important;

@@ -13,7 +13,7 @@
 }
 
 
-.badge-success--solid {
+.badge-success-solid {
   background: var(--gradient-primary);
   color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.2);

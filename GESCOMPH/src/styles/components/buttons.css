@@ -1,6 +1,6 @@
 .button-save,
 .button-cancel,
-.button-cancel--warn,
+.button-cancel-warn,
 .btn-accent {
   border: none;
   cursor: pointer;
@@ -88,13 +88,13 @@
   box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
 }
 
-.button-cancel--warn {
+.button-cancel-warn {
   background: var(--color-accent-soft);
   color: var(--color-accent-contrast);
   border: 2px solid var(--color-accent);
 }
 
-.button-cancel--warn:hover {
+.button-cancel-warn:hover {
   background: var(--color-accent);
   color: var(--white);
   transform: translateY(-1px);
