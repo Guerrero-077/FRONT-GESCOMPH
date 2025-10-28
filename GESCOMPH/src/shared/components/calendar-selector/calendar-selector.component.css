@@ -1,0 +1,145 @@
+.calendar-selector-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-selector-container h4 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.calendar-selector-container h5 {
+  color: #555;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.calendar-section {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-calendar {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.time-section {
+  margin-bottom: 20px;
+}
+
+.time-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.time-button {
+  padding: 10px 15px;
+  border: 2px solid #007bff;
+  background-color: transparent;
+  color: #007bff;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.time-button:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.time-button.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+  box-shadow: 0 2px 4px rgba(0, 86, 179, 0.3);
+}
+
+.info-section {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #007bff;
+}
+
+.info-text {
+  margin: 5px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.info-text strong {
+  color: #333;
+}
+
+.selection-display {
+  background-color: #e8f5e8;
+  padding: 15px;
+  border-radius: 6px;
+  border-left: 4px solid #28a745;
+  margin-bottom: 20px;
+}
+
+.selected-info {
+  margin: 0;
+  color: #155724;
+  font-weight: 500;
+  text-align: center;
+}
+
+.confirm-section {
+  text-align: center;
+}
+
+.confirm-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+.confirm-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .calendar-selector-container {
+    padding: 15px;
+  }
+
+  .time-buttons {
+    gap: 8px;
+  }
+
+  .time-button {
+    padding: 8px 12px;
+    font-size: 13px;
+    min-width: 70px;
+  }
+}

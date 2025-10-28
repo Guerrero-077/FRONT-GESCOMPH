@@ -1,0 +1,55 @@
+<div class="calendar-selector-container">
+  <h4>Seleccionar Fecha y Hora</h4>
+
+  <!-- Calendario visible -->
+  <div class="calendar-section">
+    <mat-calendar
+      [selected]="selectedDate.value"
+      (selectedChange)="onDateSelected($event)"
+      [dateFilter]="dateFilter"
+      class="custom-calendar">
+    </mat-calendar>
+  </div>
+
+  <!-- Selector de Horas con botones ovalados -->
+  <div class="time-section" *ngIf="selectedDate.value">
+    <h5>Selecciona una hora</h5>
+    <div class="time-buttons">
+      <button
+        *ngFor="let slot of timeSlots"
+        class="time-button"
+        [class.selected]="selectedTime.value === slot.time"
+        (click)="selectTime(slot.time)">
+        {{ slot.label }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Información de días permitidos -->
+  <div class="info-section">
+    <p class="info-text">
+      <strong>Días disponibles:</strong> Martes, Miércoles, Jueves, Viernes y Sábados
+    </p>
+    <p class="info-text">
+      <strong>Horarios disponibles:</strong> 8:00 AM - 12:00 PM y 2:00 PM - 5:00 PM
+    </p>
+  </div>
+
+  <!-- Mostrar selección actual -->
+  <div class="selection-display" *ngIf="selectedDate.value && selectedTime.value">
+    <p class="selected-info">
+      <strong>Seleccionado:</strong>
+      {{ selectedDate.value | date:'EEEE, dd/MM/yyyy' }} a las
+      {{ selectedTime.value | date:'shortTime' }}
+    </p>
+  </div>
+
+  <!-- Botón de confirmar -->
+  <div class="confirm-section" *ngIf="selectedDate.value && selectedTime.value">
+    <button
+      class="confirm-button"
+      (click)="confirmSelection()">
+      Confirmar Cita
+    </button>
+  </div>
+</div>
